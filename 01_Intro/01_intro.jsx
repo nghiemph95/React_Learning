@@ -1,1 +1,1 @@
-/** React là 1 thư viện */
+/** React là 1 thư viện không phải framework */
