@@ -11,6 +11,17 @@ function ColorBox(props) {
   return <div className="box" style={{ backgroundColor: color }}></div>;
 }
 
+// declare all props used in this component
+ColorBox.prototype = {
+  color: PropTypes.string.isRequired,
+  rounded: PropTypes.bool,
+};
+
+// set default value for non-required props
+ColorBox.defaultProps = {
+  rounded: true,
+};
+
 // Create component Cha
 import React from "react";
 import ColorBox from "./components/ColorBox";
