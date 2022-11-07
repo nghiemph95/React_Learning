@@ -25,24 +25,24 @@ function TodoFeature(props) {
 
   const [todoList, setTodoList] = useState(initTodoList);
 
-  const handleTodoList = (todo, idx) => {
+  const handleTodoClickFromChildren = (todo, idx) => {
     console.log(todo, idx);
     // clone current array
     const newTodoList = [...todoList];
     // toggle state
-    const newTodo = {
-      ...(newTodoList[idx].status === "new" ? "completed" : "new"),
+    newTodoList[idx] = {
+      ...newTodoList[idx],
+      status: newTodoList[idx].status === "new" ? "completed" : "new",
     };
 
     // update todolis
-    newTodoList[idx] = newTodo;
     setTodoList(newTodoList);
   };
 
   return (
     <div>
       <h3>TodoList</h3>
-      <TodoList todoList={todoList} onTodoClick={handleTodoList} />
+      <TodoList todoList={todoList} onTodoClick={handleTodoClickFromChildren} />
     </div>
   );
 }
