@@ -36,7 +36,7 @@ function TodoFeature(props) {
       status: newTodoList[idx].status === "new" ? "completed" : "new",
     };
 
-    // update todolis
+    // update todolisss
     setTodoList(newTodoList);
   };
 
