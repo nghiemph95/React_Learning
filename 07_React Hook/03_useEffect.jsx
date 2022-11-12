@@ -53,3 +53,11 @@ function App() {
  * UNMOUNTING
  * - run 'useEffect() cleanup'
  */
+
+/** DEPENDENCY
+ * - Nếu không khai báo Dependencies thì có nghĩa là nó luôn luôn được thực hiện (Tức là luôn
+ * luôn được chạy sau mỗi lần render)
+ * - Nếu là [] thì có nghĩa là nó chỉ chạy đúng 1 lần sau lần đầu tiên
+ * - Nếu là [có dữ liệu] thì có nghĩa là nếu dependencies thay đổi thì mới chạy lại useEffect() (Tức là
+ * nếu truyền vào 1 state mà state thay đổi thì nó sẽ gọi lại useEffect())
+ */
