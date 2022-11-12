@@ -58,3 +58,10 @@ function ColorBox() {
     return initColor;
   });
 }
+
+/** TỔNG KẾT:
+ * - useState() giúp FC có thể dùng State
+ * - useState() trả về 1 mảng 2 phần tử [name, setName]
+ * - useState() áp dụng replacing thay vì mergin như bên class component
+ * - initial state callback chỉ thực thi 1 lần đầu
+ */
