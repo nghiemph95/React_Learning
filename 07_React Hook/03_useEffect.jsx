@@ -16,3 +16,8 @@
  * - THỰC THI SAU MỖI LẦN RENDER
  * - Tuy nhiên nó còn có dependency và sau mỗi lần render nó còn TÙY THUỘC VÀO DEPENDENCY
  */
+
+/** useEffect example */
+// truyền vào hàm callback: Đây là side effect function
+// truyền vào danh sách dependencies: chỉ execute cb nếu 1 trong số dependency changes
+function useEffect(callback, dependencies) {}
