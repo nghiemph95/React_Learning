@@ -1,4 +1,4 @@
-/** Constructor: Khai báo thuộc tính, khai báo state
+/** Constructor: Khai báo thuộc tính, khai báo state (Định nghĩa state)
  * - Được phép dùng
  * - Phải có super(props)
  * - Khai báo state
