@@ -21,3 +21,35 @@
 // truyền vào hàm callback: Đây là side effect function
 // truyền vào danh sách dependencies: chỉ execute cb nếu 1 trong số dependency changes
 function useEffect(callback, dependencies) {}
+
+function App() {
+  // executed before each render
+  const [color, setColor] = useState("deeplink");
+
+  // executed after each render
+  useEffect(() => {
+    // do your side effect here...
+
+    return () => {
+      // clean up here...
+      // executed before the next render or unmount
+    };
+  }, []);
+
+  // rendering
+  return <h1>Easy Testing</h1>;
+}
+
+/** Flow run useEffect
+ * MOUNTING:
+ * - rendering
+ * - run useEffect() (run side effect)
+ *
+ * UPDATING:
+ * - rendering
+ * - run 'useEffect() cleanup' nếu dependencies thay đổi
+ * - run 'useEffect()' nếu dependencies thay đổi
+ *
+ * UNMOUNTING
+ * - run 'useEffect() cleanup'
+ */
