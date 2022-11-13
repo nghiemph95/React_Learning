@@ -49,3 +49,16 @@ function App() {
   const data = useMemo(() => [{}, {}, {}], []);
   return <Chart data={data} />;
 }
+
+/** TỔNG KẾT:
+ * GIỐNG:
+ * - Đều áp dụng kỹ thuật memoization
+ * - Đều nhận vào 2 tham số: func và dependencies
+ * - Đều là react hooks, dùng cho FC
+ * - Dùng để hạn ché những lần re-render dư thừa
+ *
+ * KHÁC:
+ * - return: memoized callback và memoized value
+ * - useCallBack((type)=> {}, [])
+ * - useMemo(()=> [{}, {}, {}], [])
+ */
