@@ -47,5 +47,5 @@ function App() {
 // --> Nên chart ko bị re-render (re-render là tạo ra 1 func mới)
 function App() {
   const data = useMemo(() => [{}, {}, {}], []);
-  return <Chart onTypeChange={handleChartTypeChange} />;
+  return <Chart data={data} />;
 }
