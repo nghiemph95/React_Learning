@@ -9,7 +9,7 @@
  * - Effects cần clean up: subscriptions, setTimeout, setInterval
  */
 
-/** useEffect() là gìL
+/** useEffect() là gì
  * - Là 1 cái hook trong React Hook
  * - Sử dụng cho FC để sử dụng side effect
  * - Mỗi hook useEffect gồm 2 thành phần: side effect và clean up (optional)
