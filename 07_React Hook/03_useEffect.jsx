@@ -9,6 +9,9 @@
  * - Effects cần clean up: subscriptions, setTimeout, setInterval
  */
 
+const { func } = require("prop-types");
+const { PureComponent } = require("react");
+
 /** useEffect() là gì
  * - Là 1 cái hook trong React Hook
  * - Sử dụng cho FC để sử dụng side effect
@@ -61,3 +64,26 @@ function App() {
  * - Nếu là [có dữ liệu] thì có nghĩa là nếu dependencies thay đổi thì mới chạy lại useEffect() (Tức là
  * nếu truyền vào 1 state mà state thay đổi thì nó sẽ gọi lại useEffect())
  */
+
+/** Biểu diễn code tương tự với Class Component */
+// Class component
+class App extends PureComponent {
+  componentDidMount() {
+    console.log("Component Did Mount");
+  }
+
+  componentWillUnmount() {
+    console.log("Component Will Unmount");
+  }
+}
+
+// Hook - Functional Components
+function App() {
+  useEffect(() => {
+    console.log("Component Did Mount");
+
+    return () => {
+      console.log("Component Will Unmount");
+    };
+  }, []);
+}
