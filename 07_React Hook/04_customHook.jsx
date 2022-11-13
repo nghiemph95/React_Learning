@@ -91,7 +91,7 @@ function useClock() {
   return { timeString };
 }
 
-// Bước 3: Gắn customHook vào các function đã được định
+// Bước 3: Gắn customHook vào cácfunction đã được định
 function Clock() {
   const { timeString } = useClock();
 
