@@ -50,7 +50,7 @@ function App() {
  * - run 'useEffect() cleanup' nếu dependencies thay đổi
  * - run 'useEffect()' nếu dependencies thay đổi
  *
- * UNMOUNTING
+ * UNMOUNTING:
  * - run 'useEffect() cleanup'
  */
 
