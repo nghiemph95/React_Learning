@@ -54,7 +54,7 @@ function App() {
  * - run 'useEffect() cleanup'
  */
 
-/** DEPENDENCY
+/** DEPENDENCY (useEffect kèm điều kiện)
  * - Nếu không khai báo Dependencies thì có nghĩa là nó luôn luôn được thực hiện (Tức là luôn
  * luôn được chạy sau mỗi lần render)
  * - Nếu là [] thì có nghĩa là nó chỉ chạy đúng 1 lần sau lần đầu tiên
