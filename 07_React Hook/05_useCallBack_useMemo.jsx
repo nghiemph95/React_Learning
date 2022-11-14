@@ -9,7 +9,7 @@
 const { useCallback, useMemo } = require("react");
 
 /** ví dụ: */
-// Mỗi lần app re-render
+// Mỗi lần app re-renderr
 // --> tạo ra một function mới
 // --> chart bị re-render
 function App() {
