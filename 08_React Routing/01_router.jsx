@@ -7,4 +7,7 @@
  * - Redirect: Chuyển hướng đường dẫn khác
  * - Link: Đi tới đướng dẫn tương ứng
  * - NavLink: Giống như Menu, khi đi đến đường dẫn trùng khớp vs link hiện tại (có thêm ClassActive)
+ *
+ *
+ * Router: BrowserRouter
  */
