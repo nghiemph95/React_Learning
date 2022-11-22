@@ -1,5 +1,6 @@
 /** Switch
  * Mục đích: Nếu component nào match trước thì sẽ render trước
+ * Tức là switch chỉ render thằng route đầu tiền mà nó có path match vs Url hiện tại
  */
 
 /** Component todoFeature sẽ đc render trước tiên */
