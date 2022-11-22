@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, Route, Switch } from "react-router-dom";
+import { Link, NavLink, Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
 import AlbumFeature from "./features/Album";
 import TodoFeature from "./features/Todo";
@@ -30,6 +30,9 @@ function App() {
         </NavLink>
       </p>
       <Switch>
+        <Redirect from="/home" to="/" exact />
+        <Redirect from="/post-list/:postId" to="posts/:postId" exact />
+
         <Route path="/" component={TodoFeature} exact />
         <Route path="/todos" component={TodoFeature} />
         <Route path="/albums" component={AlbumFeature} />
