@@ -1,5 +1,5 @@
 import React from "react";
-import { Link, NavLink, Redirect, Route, Switch } from "react-router-dom";
+import { NavLink, Redirect, Route, Switch } from "react-router-dom";
 import "./App.css";
 import AlbumFeature from "./features/Album";
 import TodoFeature from "./features/Todo";
