@@ -9,5 +9,5 @@
  * - NavLink: Giống như Menu, khi đi đến đường dẫn trùng khớp vs link hiện tại (có thêm ClassActive)
  *
  *
- * Router: BrowserRouter
+ * Router: BrowserRouter sẽ đc sử dụng chính
  */
