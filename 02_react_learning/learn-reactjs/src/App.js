@@ -1,5 +1,5 @@
 import React from "react";
-import { Route } from "react-router-dom";
+import { Link, NavLink, Route } from "react-router-dom";
 import "./App.css";
 import AlbumFeature from "./features/Album";
 import TodoFeature from "./features/Todo";
@@ -13,6 +13,22 @@ function App() {
       {/* <AlbumFeature /> */}
       {/* </header> */}
       header
+      <p>
+        <Link to="/todos">Todos</Link>
+      </p>
+      <p>
+        <Link to="/albums">Albums</Link>
+      </p>
+      <p>
+        <NavLink to="/todos" activeClassName="active-menu">
+          Todos
+        </NavLink>
+      </p>
+      <p>
+        <NavLink to="/albums" activeClassName="active-menu">
+          Albums
+        </NavLink>
+      </p>
       <Route path="/todos" component={TodoFeature} />
       <Route path="/albums" component={AlbumFeature} />
       footer
