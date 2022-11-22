@@ -12,9 +12,10 @@ function App() {
       {/* <TodoFeature /> */}
       {/* <AlbumFeature /> */}
       {/* </header> */}
-
+      header
       <Route path="/todos" component={TodoFeature} />
       <Route path="/albums" component={AlbumFeature} />
+      footer
     </div>
   );
 }
