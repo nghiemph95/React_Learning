@@ -30,9 +30,7 @@ function App() {
         </NavLink>
       </p>
       <Switch>
-        <Route path="/todos" component={TodoFeature} />
-        <Route path="/todos" component={TodoFeature} />
-        <Route path="/todos" component={TodoFeature} />
+        <Route path="/" component={TodoFeature} exact />
         <Route path="/todos" component={TodoFeature} />
         <Route path="/albums" component={AlbumFeature} />
       </Switch>
