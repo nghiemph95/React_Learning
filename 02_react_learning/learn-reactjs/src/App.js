@@ -1,8 +1,8 @@
+import React from "react";
+import { Route } from "react-router-dom";
 import "./App.css";
 import AlbumFeature from "./features/Album";
-import React from "react";
 import TodoFeature from "./features/Todo";
-import { Route } from "react-router-dom";
 
 //Mainnn
 function App() {
