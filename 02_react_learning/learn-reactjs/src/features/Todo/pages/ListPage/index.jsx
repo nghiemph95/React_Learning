@@ -35,9 +35,9 @@ function ListPage(props) {
   });
 
   const handleTodoClickFromChildren = (todo, idx) => {
-    console.log(todo, idx);
-    // clone current array
+    // clone current array to the new one
     const newTodoList = [...todoList];
+
     // toggle state
     newTodoList[idx] = {
       ...newTodoList[idx],
