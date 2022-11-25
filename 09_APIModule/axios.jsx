@@ -7,3 +7,7 @@
 /** Pages/Container -> call API -> API Module -> request -> API Server ->
  * -> response -> API Module(AxiosClient.js) -> Pages
  */
+
+/**  Axios là một thư viện HTTP Client dựa trên Promise.
+ * Cơ bản thì nó cung cấp một API cho việc xử lý XHR (XMLHttpRequests)
+ * */
