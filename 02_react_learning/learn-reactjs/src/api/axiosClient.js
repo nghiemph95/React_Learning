@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// Tạo instance cho axios
+// Tạo instance cho axios (Tạo ra một đối tượng axios)
 const axiosClient = axios.create({
   baseURL: "https://api.ezfrontend.com/",
   headers: {
