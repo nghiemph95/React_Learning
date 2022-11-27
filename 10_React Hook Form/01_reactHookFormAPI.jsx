@@ -35,6 +35,6 @@ const { register } = useForm({
 
 /** Controller: Định nghĩa form control (Giúp tư động bind vào các sự kiện trong các UI control)*/
 
-/** ErrorMesssage: Mỗi lần có lỗi , cần show lỗi trên form, khi nào mình muốn nó có lỗi mới show, con
- * còn ko thì thôi
+/** ErrorMesssage: Show errorMessage khi cần thiết(Mỗi lần có lỗi , cần show lỗi trên form, khi nào mình muốn nó có lỗi mới show, con
+ * còn ko thì thôi)
  */
