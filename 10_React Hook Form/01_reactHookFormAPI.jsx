@@ -5,12 +5,13 @@
  * + register
  * + unregister
  * + error
- * + handleSubmit
+ * + watch: hay dùng
+ * + handleSubmit: hay dùng
  * + reset
  * + setError
  * + clearErrors
- * + setValue
- * + getValues
+ * + setValue: hay dùng
+ * + getValues: hay dùng
  * + trigger
  * + control
  * + formState
@@ -31,3 +32,9 @@ const { register } = useForm({
 /** onSubmit: Nó chỉ validation khi form đc submit hoặc input bị invalid */
 /** defaultValue: Giá trị mặc đinh, giá trị khởi tạo của form */
 /** resolver: Để truyền vô cho nó 1 thằng validation resolver ví dụ như Yup */
+
+/** Controller: Định nghĩa form control (Giúp tư động bind vào các sự kiện trong các UI control)*/
+
+/** ErrorMesssage: Mỗi lần có lỗi , cần show lỗi trên form, khi nào mình muốn nó có lỗi mới show, con
+ * còn ko thì thôi
+ */
