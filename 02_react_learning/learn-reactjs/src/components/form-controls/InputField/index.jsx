@@ -1,6 +1,5 @@
+import TextField from "@mui/material/TextField";
 import React from "react";
-import PropTypes from "prop-types";
-import { TextField } from "@material-ui/core";
 
 InputField.propTypes = {};
 
