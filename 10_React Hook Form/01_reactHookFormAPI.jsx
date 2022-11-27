@@ -1,7 +1,19 @@
 /** Hook:
  * - useForm: Giúp tạo ra object form instance, trong đó sẽ cung cấp đầy đủ các phương thức
  * giúp ng dùng có thể lấy được: giá trị của form, trạng thái của form, reset hoặc set value
- *
+ * - Khi gọi useForm nó sẽ trả về một số hàm gồm:
+ * + register
+ * + unregister
+ * + error
+ * + handleSubmit
+ * + reset
+ * + setError
+ * + clearErrors
+ * + setValue
+ * + getValues
+ * + trigger
+ * + control
+ * + formState
  */
 
 /** Ví dụ: */
