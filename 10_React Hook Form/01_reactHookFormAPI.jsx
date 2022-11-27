@@ -38,3 +38,8 @@ const { register } = useForm({
 /** ErrorMesssage: Show errorMessage khi cần thiết(Mỗi lần có lỗi , cần show lỗi trên form, khi nào mình muốn nó có lỗi mới show, con
  * còn ko thì thôi)
  */
+
+/** Sử dụng React Hook Form:
+ * Từ trang Pages/Container --> tạo ra Form Component(Handle tất cà control bên dưới nó và validation cho đến khi nó đc submit)
+ * --> 1 form thì gồm nhiều formField (Base control: InputField, PhotoField, TextField) --> UI Control
+ */
