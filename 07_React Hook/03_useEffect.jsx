@@ -39,7 +39,7 @@ function App() {
     };
   }, []);
 
-  // renderingggfff
+  // rendering
   return <h1>Easy Testing</h1>;
 }
 
