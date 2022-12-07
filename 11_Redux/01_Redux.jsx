@@ -15,3 +15,14 @@
  * Là một thư viện của Redux team, cung cấp sẵn các hàm tiện ích giúp cho
  * việc sử dụng Redux một cách chuẩn hơn, đơn giản và hiệu quả hơn.
  */
+
+/** Workflow của Redux (chỉ đi đúng 1 chiều)
+ *
+ * View(UI, giao diện) -> Action (JS Object) -> Store(Bao gồm Reducer(func), Dispatcher và State cũ)
+ * Reducer: là 1 function nhận và 2 thứ: Action và State hiện tại nhằm biến đổi state hiện tại
+ * thành state mới dựa vào action
+ *
+ * CHÍNH NHỜ REDUCER MÀ REDUX TRỞ THÀNH PREDICTABLE
+ *
+ * Vì cùng 1 cái State, 1 cái Action thì nó luôn luôn cho ra 1 state mới giống nhau
+ */
