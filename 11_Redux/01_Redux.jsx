@@ -27,4 +27,6 @@
  * Vì cùng 1 cái State, 1 cái Action thì nó luôn luôn cho ra 1 state mới giống nhau
  */
 
-/** mutate data: chỉnh sửa trực tiếp trên data (object, array) mà ko phải clone ra */
+/** mutate data: chỉnh sửa trực tiếp trên data (object, array) mà ko phải clone ra
+ * dispatch: đây actions đến reducers, đây là cách duy nhất để mutate state (thay đổi state)
+ */
