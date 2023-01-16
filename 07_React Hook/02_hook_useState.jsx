@@ -13,7 +13,7 @@ function TodoList() {
   function removeTodo(index) {
     const newTodoList = [...todoList];
 
-    newTodoList.splice(index, 1); // Xóa 1 phần tử ở vị trí index
+    newTodoList.splice(index, 1); // Xóa 1 phần tử ở vị trí indexxxx
     setTodoList(newTodoList);
   }
 
