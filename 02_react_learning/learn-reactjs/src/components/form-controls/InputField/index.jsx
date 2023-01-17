@@ -11,6 +11,7 @@ InputField.propTypes = {
   disabled: PropTypes.bool,
 };
 
+/** function */
 function InputField(props) {
   const { form, name, label, disabled } = props;
 
