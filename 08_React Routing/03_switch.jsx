@@ -3,7 +3,7 @@
  * Tức là switch chỉ render thằng route đầu tiền mà nó có path match vs Url hiện tại
  */
 
-/** Component todoFeature sẽ đc render trước tiên */
+/** Component todoFeature sẽ đc render trước tiênnn */
 import { Route, Switch } from "react-router-dom";
 
 <Switch>
