@@ -8,7 +8,7 @@ TodoList.defaultProps = {
 };
 
 function TodoList({ todoList }) {
-  return <div></div>;
+  return <ul></ul>;
 }
 
 export default TodoList;
