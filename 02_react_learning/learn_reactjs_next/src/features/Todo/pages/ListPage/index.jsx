@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import TodoList from '../../components/TodoList';
 import { useState } from 'react';
+import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
+import queryString from 'query-string';
+import { useEffect } from 'react';
 
 ListPage.propTypes = {};
 
@@ -24,9 +27,27 @@ function ListPage(props) {
     },
   ];
 
+  const location = useLocation();
+
+  /** Sử dụng useHistory để navigate */
+  const history = useHistory();
+
+  /** Sử dụng đường dẫn cha */
+  const match = useRouteMatch();
+
   /** State */
   const [todoList, setTodoList] = useState(initTodoList);
-  const [filterStatus, setFilterStatus] = useState('all');
+
+  const [filterStatus, setFilterStatus] = useState(() => {
+    const param = queryString.parse(location.search);
+
+    return param.status || 'all';
+  });
+
+  /** Control */
+  useEffect(() => {
+    setFilterStatus(queryString.parse(location.search).status || 'all');
+  }, [location.search]);
 
   const handleTodoClick = (todo, idx) => {
     // clone current array to new one
@@ -45,15 +66,30 @@ function ListPage(props) {
   };
 
   const handleShowAllClick = () => {
-    setFilterStatus('all');
+    // setFilterStatus('all');
+    const queryParams = { status: 'all' };
+    history.push({
+      pathname: match.path,
+      search: queryString.stringify(queryParams),
+    });
   };
 
   const handleShowCompletedClick = () => {
-    setFilterStatus('completed');
+    // setFilterStatus('completed');
+    const queryParams = { status: 'completed' };
+    history.push({
+      pathname: match.path,
+      search: queryString.stringify(queryParams),
+    });
   };
 
   const handleShowNewClick = () => {
-    setFilterStatus('new');
+    // setFilterStatus('new');
+    const queryParams = { status: 'new' };
+    history.push({
+      pathname: match.path,
+      search: queryString.stringify(queryParams),
+    });
   };
 
   const renderTodoList = todoList.filter((todo) => filterStatus === 'all' || filterStatus === todo.status);
