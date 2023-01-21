@@ -1,3 +1,4 @@
+import TodoForm from 'features/Todo/components/TodoForm';
 import queryString from 'query-string';
 import React, { useEffect, useMemo, useState } from 'react';
 import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
@@ -93,8 +94,15 @@ function ListPage(props) {
     return todoList.filter((todo) => filterStatus === 'all' || filterStatus === todo.status);
   }, [todoList, filterStatus]);
 
+  const handleTodoFormSubmit = (values) => {
+    console.log('Form submit: ', values);
+  };
+
   return (
     <div>
+      <h3>What to do</h3>
+      <TodoForm onSubmit={handleTodoFormSubmit} />
+
       <h3> Todo List</h3>
       <TodoList todoList={renderTodoList} onTodoClick={handleTodoClick} />
 

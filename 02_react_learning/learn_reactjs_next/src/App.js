@@ -3,7 +3,7 @@ import NotFound from 'components/NotFound';
 import AlbumFeature from 'features/Album';
 import TodoFeature from 'features/Todo';
 import React, { useEffect } from 'react';
-import { Link, NavLink, Redirect, Route, Switch } from 'react-router-dom';
+import { NavLink, Redirect, Route, Switch } from 'react-router-dom';
 import './App.css';
 
 /** App main*/
