@@ -1,3 +1,4 @@
+import NotFound from 'components/NotFound';
 import AlbumFeature from 'features/Album';
 import TodoFeature from 'features/Todo';
 import React from 'react';
@@ -24,6 +25,8 @@ function App() {
 
         <Route path="/todos" component={TodoFeature} />
         <Route path="/albums" component={AlbumFeature} />
+
+        <Route component={NotFound} />
       </Switch>
       Footer
     </div>
