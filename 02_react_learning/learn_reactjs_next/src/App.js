@@ -1,4 +1,5 @@
 import AlbumFeature from 'features/Album';
+import TodoFeature from 'features/Todo/pages';
 import React from 'react';
 import './App.css';
 
@@ -6,8 +7,8 @@ import './App.css';
 function App() {
   return (
     <div className="app">
-      {/* <TodoFeature /> */}
-      <AlbumFeature />
+      <TodoFeature />
+      {/* <AlbumFeature /> */}
     </div>
   );
 }
