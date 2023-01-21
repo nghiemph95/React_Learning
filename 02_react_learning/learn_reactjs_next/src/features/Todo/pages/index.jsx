@@ -9,6 +9,14 @@ function TodoFeature(props) {
       id: 1,
       title: 'Eat',
     },
+    {
+      id: 2,
+      title: 'Sleep',
+    },
+    {
+      id: 3,
+      title: 'Code',
+    },
   ];
 
   return <div>TodoFeatures</div>;
