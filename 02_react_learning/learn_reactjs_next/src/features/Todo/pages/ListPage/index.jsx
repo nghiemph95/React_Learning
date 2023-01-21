@@ -1,10 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import TodoList from '../../components/TodoList';
-import { useState } from 'react';
-import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
 import queryString from 'query-string';
-import { useEffect } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
+import { useHistory, useLocation, useRouteMatch } from 'react-router-dom';
+import TodoList from '../../components/TodoList';
 
 ListPage.propTypes = {};
 
@@ -92,7 +89,9 @@ function ListPage(props) {
     });
   };
 
-  const renderTodoList = todoList.filter((todo) => filterStatus === 'all' || filterStatus === todo.status);
+  const renderTodoList = useMemo(() => {
+    return todoList.filter((todo) => filterStatus === 'all' || filterStatus === todo.status);
+  }, [todoList, filterStatus]);
 
   return (
     <div>
