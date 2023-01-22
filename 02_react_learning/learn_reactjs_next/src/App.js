@@ -1,6 +1,7 @@
 import productApi from 'api/productApi';
 import NotFound from 'components/NotFound';
 import AlbumFeature from 'features/Album';
+import CounterFeature from 'features/Counter';
 import TodoFeature from 'features/Todo';
 import React, { useEffect } from 'react';
 import { NavLink, Redirect, Route, Switch } from 'react-router-dom';
@@ -35,12 +36,12 @@ function App() {
       <Switch>
         <Redirect from="home" to="/" exact />
 
+        <Route path="/" component={CounterFeature} exact />
         <Route path="/todos" component={TodoFeature} />
         <Route path="/albums" component={AlbumFeature} />
 
-        <Route component={NotFound} />
+        {/* <Route component={NotFound} /> */}
       </Switch>
-      Footer
     </div>
   );
 }
