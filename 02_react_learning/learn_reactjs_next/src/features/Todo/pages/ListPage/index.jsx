@@ -95,7 +95,18 @@ function ListPage(props) {
   }, [todoList, filterStatus]);
 
   const handleTodoFormSubmit = (values) => {
-    console.log('Form submit: ', values);
+    /** Tạo 1 newTodo mới */
+    const newTodo = {
+      id: todoList.length + 1,
+      title: values.title,
+      status: 'new',
+    };
+
+    /** Tạo 1 list mới bao gồm phần tử hiện tại và phần tử mới */
+    const newTodoList = [...todoList, newTodo];
+
+    /** Gắn vào state newTodoLít */
+    setTodoList(newTodoList);
   };
 
   return (

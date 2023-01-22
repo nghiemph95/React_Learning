@@ -1,8 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import InputField from 'components/form-controls/InputField';
-import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
+import InputField from 'components/form-controls/InputField';
+import PropTypes from 'prop-types';
+import React from 'react';
+import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 
 TodoForm.propTypes = {
@@ -25,7 +25,13 @@ function TodoForm(props) {
 
   /** Handle Submit */
   const handleSubmit = (values) => {
-    console.log('TODO FORM: ', values);
+    const { onSubmit } = props;
+
+    if (onSubmit) {
+      onSubmit(values);
+    }
+
+    form.reset();
   };
 
   return (
