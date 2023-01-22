@@ -1,4 +1,6 @@
 import { yupResolver } from '@hookform/resolvers/yup';
+import { Avatar, Typography } from '@material-ui/core';
+import { LockOutlined } from '@material-ui/icons';
 import InputField from 'components/form-controls/InputField';
 import PropTypes from 'prop-types';
 import React from 'react';
@@ -35,9 +37,22 @@ function RegisterForm(props) {
   };
 
   return (
-    <form onSubmit={form.handleSubmit(handleSubmit)}>
-      <InputField name="title" form={form} label="Todo" />
-    </form>
+    <div>
+      <Avatar>
+        <LockOutlined></LockOutlined>
+      </Avatar>
+
+      <Typography component="h3" variant="h5">
+        Create an Account
+      </Typography>
+
+      <form onSubmit={form.handleSubmit(handleSubmit)}>
+        <InputField name="fullName" form={form} label="Full Name" />
+        <InputField name="email" form={form} label="Email" />
+        <InputField name="password" form={form} label="Password" />
+        <InputField name="retypePassword" form={form} label="Retype Password" />
+      </form>
+    </div>
   );
 }
 
