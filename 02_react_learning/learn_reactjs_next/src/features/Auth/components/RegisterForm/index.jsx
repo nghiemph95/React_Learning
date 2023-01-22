@@ -2,6 +2,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Avatar, Button, makeStyles, Typography } from '@material-ui/core';
 import { LockOutlined } from '@material-ui/icons';
 import InputField from 'components/form-controls/InputField';
+import PasswordField from 'components/form-controls/PasswordField';
 import PropTypes from 'prop-types';
 import React from 'react';
 import { useForm } from 'react-hook-form';
@@ -37,9 +38,7 @@ function RegisterForm(props) {
   const classes = useStyles();
 
   /** Validation */
-  const schema = yup.object().shape({
-    title: yup.string().required('Please enter title!').min(5, 'Title is to short'),
-  });
+  const schema = yup.object().shape({});
 
   const form = useForm({
     /** Nếu không khai báo defaultValue thì nó sẽ hiểu là undefined (uncontrol) */
@@ -76,11 +75,11 @@ function RegisterForm(props) {
       <form onSubmit={form.handleSubmit(handleSubmit)}>
         <InputField name="fullName" form={form} label="Full Name" />
         <InputField name="email" form={form} label="Email" />
-        <InputField name="password" form={form} label="Password" />
-        <InputField name="retypePassword" form={form} label="Retype Password" />
+        <PasswordField name="password" form={form} label="Password" />
+        <PasswordField name="retypePassword" form={form} label="Retype Password" />
       </form>
 
-      <Button className={classes.submit} variant="contained" color="primary" fullWidth>
+      <Button type="submit" className={classes.submit} variant="contained" color="primary" fullWidth>
         Create an Account
       </Button>
     </div>
