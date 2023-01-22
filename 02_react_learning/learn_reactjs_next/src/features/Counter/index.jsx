@@ -13,12 +13,14 @@ function CounterFeature(props) {
 
   /** Controller */
   const handleIncreaseClick = () => {
+    /** Nếu muốn tạo 1 action để gửi lên redux , chỉ cần gọi action creator mà slice đã tạo sẵn */
     const action = increase(); // action creator
 
     dispatch(action);
   };
 
   const handleDecreaseClick = () => {
+    /** Nếu muốn tạo 1 action để gửi lên redux , chỉ cần gọi action creator mà slice đã tạo sẵn */
     const action = decrease(); // action creator
 
     dispatch(action);
