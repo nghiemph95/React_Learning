@@ -20,7 +20,10 @@ function RegisterForm(props) {
   const form = useForm({
     /** Nếu không khai báo defaultValue thì nó sẽ hiểu là undefined (uncontrol) */
     defaultValues: {
-      title: '',
+      fullName: '',
+      email: '',
+      password: '',
+      retypePassword: '',
     },
     resolver: yupResolver(schema),
   });
