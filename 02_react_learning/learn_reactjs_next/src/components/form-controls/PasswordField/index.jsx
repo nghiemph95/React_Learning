@@ -1,3 +1,4 @@
+import { FormHelperText } from '@material-ui/core';
 import FormControl from '@material-ui/core/FormControl';
 import IconButton from '@material-ui/core/IconButton';
 import InputAdornment from '@material-ui/core/InputAdornment';
@@ -24,7 +25,7 @@ function PasswordField(props) {
   const { errors, formState } = form;
 
   /** Show error khi field đc touch */
-  const hasError = formState.touched[name] && errors[name];
+  const hasError = !!errors[name];
 
   /** States */
   const [showPassword, setShowPassword] = useState(false);
@@ -35,7 +36,7 @@ function PasswordField(props) {
   };
   return (
     <div>
-      <FormControl fullWidth margin="normal" variant="outlined">
+      <FormControl error={hasError} fullWidth margin="normal" variant="outlined">
         <InputLabel htmlFor="outlined-adornment-password">{label}</InputLabel>
         <Controller
           name={name}
@@ -53,8 +54,8 @@ function PasswordField(props) {
           }
           disabled={disabled}
           error={!!hasError}
-          helperText={errors[name]?.message}
         />
+        <FormHelperText>{errors[name]?.message}</FormHelperText>
       </FormControl>
     </div>
   );

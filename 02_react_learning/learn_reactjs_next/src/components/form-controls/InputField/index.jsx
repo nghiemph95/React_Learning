@@ -18,7 +18,7 @@ function InputField(props) {
   const { errors, formState } = form;
 
   /** Show error khi field đc touch */
-  const hasError = formState.touched[name] && errors[name];
+  const hasError = errors[name];
 
   return (
     <Controller
