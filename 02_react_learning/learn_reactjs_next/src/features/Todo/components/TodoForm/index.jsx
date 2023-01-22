@@ -14,7 +14,10 @@ function TodoForm(props) {
     },
   });
 
-  const handleSubmit = (values) => {};
+  /** Handle Submit */
+  const handleSubmit = (values) => {
+    console.log('TODO FORM: ', values);
+  };
 
   return (
     <form onSubmit={form.handleSubmit(handleSubmit)}>

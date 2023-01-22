@@ -14,11 +14,7 @@ InputField.propTypes = {
 function InputField(props) {
   const { form, name, label, disabled } = props;
 
-  return (
-    <Controller>
-      <TextField fullWidth />
-    </Controller>
-  );
+  return <Controller name={name} control={form.control} as={TextField} fullWidth label={label} disabled={disabled} />;
 }
 
 export default InputField;
