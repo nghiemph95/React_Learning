@@ -17,6 +17,10 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  link: {
+    textDecoration: 'none',
+    color: 'white',
+  },
 }));
 
 export default function Header() {
@@ -29,14 +33,16 @@ export default function Header() {
           <CodeIcon className={classes.menuButton} />
 
           <Typography variant="h6" className={classes.title}>
-            <Link to="/">EZ Shop</Link>
+            <Link className={classes.link} to="/">
+              EZ Shop
+            </Link>
           </Typography>
 
-          <NavLink to="/todos">
+          <NavLink className={classes.link} to="/todos">
             <Button color="inherit">Todos</Button>
           </NavLink>
 
-          <NavLink to="/albums">
+          <NavLink className={classes.link} to="/albums">
             <Button color="inherit">Albums</Button>
           </NavLink>
 
