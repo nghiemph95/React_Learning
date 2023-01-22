@@ -1,5 +1,5 @@
 import productApi from 'api/productApi';
-import NotFound from 'components/NotFound';
+import Header from 'components/Header';
 import AlbumFeature from 'features/Album';
 import CounterFeature from 'features/Counter';
 import TodoFeature from 'features/Todo';
@@ -20,9 +20,10 @@ function App() {
 
     fetchProducts();
   }, []);
+
   return (
     <div className="app">
-      Header
+      <Header />
       <p>
         <NavLink to="/todos" activeClassName="active-menu">
           Todos
