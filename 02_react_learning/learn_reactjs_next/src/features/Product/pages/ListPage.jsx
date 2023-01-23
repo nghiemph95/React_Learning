@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
 import { useEffect } from 'react';
 import productApi from 'api/productApi';
+import { useState } from 'react';
 
 ListPage.propTypes = {};
 
@@ -22,11 +23,19 @@ function ListPage(props) {
   /** Styles */
   const classes = useStyles();
 
+  /** States */
+  const [productList, setProductList] = useState([]);
+  const [loading, setLoading] = useState(true);
+
   /** Controler */
   useEffect(() => {
     (async () => {
-      const response = await productApi.getAll({ _page: 1, _limit: 10 });
-      console.log({ response });
+      try {
+        const response = await productApi.getAll({ _page: 1, _limit: 10 });
+        console.log({ response });
+      } catch (error) {}
+
+      // setLoading(false);
     })();
   }, []);
   return (
