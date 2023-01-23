@@ -11,6 +11,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import { Close } from '@material-ui/icons';
 import CodeIcon from '@material-ui/icons/Code';
+import Login from 'features/Auth/components/Login';
 import Register from 'features/Auth/components/Register';
 import React, { useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
@@ -34,6 +35,7 @@ const useStyles = makeStyles((theme) => ({
     top: theme.spacing(1),
     right: theme.spacing(1),
     color: theme.palette.grey[500],
+    zIndex: 1,
   },
 }));
 
@@ -82,19 +84,14 @@ export default function Header() {
         onClose={handleClose}
         aria-labelledby="form-dialog-title"
       >
-        <IconButton className={classes.closeButton}>
+        <IconButton className={classes.closeButton} onClick={handleClose}>
           <Close />
         </IconButton>
 
         <DialogContent>
-          <Register closeDialog={handleClose} />
+          {/* <Register closeDialog={handleClose} /> */}
+          <Login closeDialog={handleClose} />
         </DialogContent>
-
-        <DialogActions>
-          <Button onClick={handleClose} color="primary">
-            Cancel
-          </Button>
-        </DialogActions>
       </Dialog>
     </div>
   );

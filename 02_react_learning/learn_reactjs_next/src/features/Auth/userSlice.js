@@ -15,6 +15,18 @@ export const register = createAsyncThunk('user/register', async (payload) => {
   return data.user;
 });
 
+export const login = createAsyncThunk('user/login', async (payload) => {
+  // Call Api to register
+  const data = await userApi.login(payload);
+
+  // save data to local storage
+  localStorage.setItem('access_token', data.jwt);
+  localStorage.setItem('user', JSON.stringify(data.user));
+
+  // return user data
+  return data.user;
+});
+
 const userSlice = createSlice({
   name: 'user',
 
@@ -28,6 +40,10 @@ const userSlice = createSlice({
   extraReducers: {
     /** [register.fulfilled] = 'user/register/fulfilled' là 1 chuỗi */
     [register.fulfilled]: (state, action) => {
+      state.current = action.payload; // action.payload là kết quả return trên createThunk
+    },
+
+    [login.fulfilled]: (state, action) => {
       state.current = action.payload; // action.payload là kết quả return trên createThunk
     },
   },
