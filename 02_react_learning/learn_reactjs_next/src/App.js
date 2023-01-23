@@ -2,6 +2,7 @@ import productApi from 'api/productApi';
 import Header from 'components/Header';
 import AlbumFeature from 'features/Album';
 import CounterFeature from 'features/Counter';
+import ProductFeature from 'features/Product';
 import TodoFeature from 'features/Todo';
 import React, { useEffect } from 'react';
 import { NavLink, Redirect, Route, Switch } from 'react-router-dom';
@@ -24,7 +25,7 @@ function App() {
   return (
     <div className="app">
       <Header />
-      <p>
+      {/* <p>
         <NavLink to="/todos" activeClassName="active-menu">
           Todos
         </NavLink>
@@ -33,13 +34,15 @@ function App() {
         <NavLink to="/albums" activeClassName="active">
           Album
         </NavLink>
-      </p>
+      </p> */}
       <Switch>
         <Redirect from="home" to="/" exact />
 
         <Route path="/" component={CounterFeature} exact />
         <Route path="/todos" component={TodoFeature} />
         <Route path="/albums" component={AlbumFeature} />
+
+        <Route path="/products" component={ProductFeature} />
 
         {/* <Route component={NotFound} /> */}
       </Switch>
