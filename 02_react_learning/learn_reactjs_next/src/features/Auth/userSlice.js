@@ -37,7 +37,15 @@ const userSlice = createSlice({
     settings: {},
   },
 
-  reducers: {},
+  reducers: {
+    logout(state) {
+      // clear local storage
+      localStorage.removeItem(StorageKeys.USER);
+      localStorage.removeItem(StorageKeys.TOKEN);
+
+      state.current = {};
+    },
+  },
 
   extraReducers: {
     /** [register.fulfilled] = 'user/register/fulfilled' là 1 chuỗi */
@@ -52,6 +60,7 @@ const userSlice = createSlice({
 });
 
 /** Action + Reducer */
-const { reducer } = userSlice;
+const { reducer, actions } = userSlice;
+export const { logout } = actions;
 
 export default reducer; // default export
