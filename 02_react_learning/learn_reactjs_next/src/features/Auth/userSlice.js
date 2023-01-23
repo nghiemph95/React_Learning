@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import userApi from 'api/userApi';
+/** Tạo async action để goi API */
 
 /** Create the thunk */
 const register = createAsyncThunk('users/register', async (payload, thunkAPI) => {
@@ -19,7 +20,6 @@ const userSlice = createSlice({
 
   initialState: {
     current: {},
-
     settings: {},
   },
 
