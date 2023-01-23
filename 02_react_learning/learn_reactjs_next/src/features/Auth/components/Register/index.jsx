@@ -7,7 +7,7 @@ import RegisterForm from '../RegisterForm';
 Register.propTypes = {};
 
 function Register(props) {
-  /** get dispatch */
+  // get dispatch
   const dispatch = useDispatch();
 
   const handleSubmit = async (values) => {
