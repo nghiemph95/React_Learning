@@ -4,11 +4,14 @@ import userApi from 'api/userApi';
 /** Create the thunk */
 const register = createAsyncThunk('users/register', async (payload, thunkAPI) => {
   // Call Api to register
+  const data = await userApi.register(payload);
 
   // save data to local storage
+  localStorage.setItem('access_token', data.jwt);
+  localStorage.setItem('user', JSON.stringify(data.user));
 
   // return user data
-  return {};
+  return data.user;
 });
 
 const userSlice = createSlice({
