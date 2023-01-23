@@ -3,7 +3,7 @@ import userApi from 'api/userApi';
 /** Tạo async action để goi API */
 
 /** Create the thunk */
-export const register = createAsyncThunk('users/register', async (payload, thunkAPI) => {
+export const register = createAsyncThunk('user/register', async (payload) => {
   // Call Api to register
   const data = await userApi.register(payload);
 

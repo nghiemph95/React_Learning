@@ -10,20 +10,16 @@ function Register(props) {
   /** get dispatch */
   const dispatch = useDispatch();
 
-  const handleSubmit = (values) => {
+  const handleSubmit = async (values) => {
     try {
       // auto set username = email
       values.username = values.email;
-
       // create action
       const action = register(values);
-
       // dispatch action
-      const resultAction = dispatch(action);
-
+      const resultAction = await dispatch(action);
       // get result after dispatch
       const user = unwrapResult(resultAction);
-
       console.log('New user', user);
     } catch (error) {
       console.log('Failed to register: ', error);
