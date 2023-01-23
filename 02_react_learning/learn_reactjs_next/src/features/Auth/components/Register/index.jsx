@@ -30,10 +30,10 @@ function Register(props) {
       const { closeDialog } = props;
       if (closeDialog) closeDialog();
 
-      console.log('New user', user);
       enqueueSnackbar('Register completed', { variant: 'success' });
     } catch (error) {
       console.log('Failed to register: ', error);
+      enqueueSnackbar(error.message, { variant: 'error' });
     }
   };
 
