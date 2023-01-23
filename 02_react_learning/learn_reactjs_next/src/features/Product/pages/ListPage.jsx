@@ -22,7 +22,7 @@ function ListPage(props) {
   return (
     <Box>
       <Container>
-        <Grid container>
+        <Grid container spacing={1}>
           <Grid item className={classes.left}>
             <Paper elevation={0}>Left Column</Paper>
           </Grid>
