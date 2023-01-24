@@ -3,26 +3,38 @@ import PropTypes from 'prop-types';
 import { Box, Button, TextField, Typography } from '@material-ui/core';
 import { useState } from 'react';
 
-FilterByPrice.propTypes = {};
+FilterByPrice.propTypes = {
+  onChange: PropTypes.func,
+};
 
-function FilterByPrice(props) {
+function FilterByPrice({ onChange }) {
   /** State */
-  const [value, setValue] = useState({
+  const [values, setValues] = useState({
     salePrice_gte: 0,
     salePrice_lte: 0,
   });
 
   /** Controller */
-  const handleSubmit = () => {};
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setValues((preValues) => ({
+      ...preValues,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = () => {
+    if (onChange) onChange(values);
+  };
 
   return (
     <Box>
       <Typography variant="subtitle2">GIÁ</Typography>
 
       <Box>
-        <TextField name="salePrice_gte" />
+        <TextField name="salePrice_gte" value={values.salePrice_gte} onChange={handleChange} />
         <span>-</span>
-        <TextField name="salePrice_lte" />
+        <TextField name="salePrice_lte" value={values.salePrice_lte} onChange={handleChange} />
       </Box>
 
       <Button variant="outlined" color="primary" onClick={handleSubmit}>
