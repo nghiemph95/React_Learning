@@ -1,9 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
+import { Box, Container, Grid, makeStyles, Paper, Typography } from '@material-ui/core';
 import { useEffect } from 'react';
 import productApi from 'api/productApi';
 import { useState } from 'react';
+import ProductSkeletonList from '../components/ProductSkeletonList';
 
 ListPage.propTypes = {};
 
@@ -31,9 +32,11 @@ function ListPage(props) {
   useEffect(() => {
     (async () => {
       try {
-        const response = await productApi.getAll({ _page: 1, _limit: 10 });
-        console.log({ response });
-      } catch (error) {}
+        const { data } = await productApi.getAll({ _page: 1, _limit: 10 });
+        setProductList(data);
+      } catch (error) {
+        console.log('Fail to query', error);
+      }
 
       // setLoading(false);
     })();
@@ -47,7 +50,7 @@ function ListPage(props) {
           </Grid>
 
           <Grid item className={classes.right}>
-            <Paper elevation={0}>Right Column</Paper>
+            <Paper elevation={0}>{loading ? <ProductSkeletonList /> : <Typography>Right Column</Typography>}</Paper>
           </Grid>
         </Grid>
       </Container>
