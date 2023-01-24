@@ -50,6 +50,7 @@ function ListPage(props) {
   const [filters, setFilters] = useState({
     _page: 1,
     _limit: 9,
+    _sort: 'salePrice:ASC',
   });
 
   /** Controler */
@@ -75,6 +76,13 @@ function ListPage(props) {
     }));
   };
 
+  const handleSortChange = (newSortValue) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      _sort: newSortValue,
+    }));
+  };
+
   return (
     <Box>
       <Container>
@@ -84,7 +92,7 @@ function ListPage(props) {
           </Grid>
 
           <Grid item className={classes.right}>
-            <ProductSort />
+            <ProductSort currentSort={filters._sort} onChange={handleSortChange} />
 
             <Paper elevation={0}>
               {loading ? <ProductSkeletonList length={9} /> : <ProductList data={productList} />}
