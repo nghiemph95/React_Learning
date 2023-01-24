@@ -29,20 +29,29 @@ function ListPage(props) {
   /** States */
   const [productList, setProductList] = useState([]);
   const [loading, setLoading] = useState(true);
+  //pagination
+  const [pagination, setPagination] = useState({});
+
+  // filter
+  const [filters, setFilters] = useState({
+    _page: 1,
+    _limit: 10,
+  });
 
   /** Controler */
   useEffect(() => {
     (async () => {
       try {
-        const { data } = await productApi.getAll({ _page: 1, _limit: 10 });
+        const { data, pagination } = await productApi.getAll(filters);
         setProductList(data);
+        console.log({ data, pagination });
       } catch (error) {
         console.log('Fail to query', error);
       }
 
       setLoading(false);
     })();
-  }, []);
+  }, [filters]);
   return (
     <Box>
       <Container>
