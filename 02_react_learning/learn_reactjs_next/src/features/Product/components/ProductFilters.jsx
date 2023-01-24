@@ -18,7 +18,7 @@ function ProductFilters({ filters, onChange }) {
 
     const newFilters = {
       ...filters,
-      categoryId: newCategoryId,
+      'category.id': newCategoryId,
     };
 
     onChange(newFilters);
