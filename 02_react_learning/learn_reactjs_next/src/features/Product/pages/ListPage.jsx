@@ -31,7 +31,7 @@ function ListPage(props) {
   const [loading, setLoading] = useState(true);
   //pagination
   const [pagination, setPagination] = useState({
-    limit: 10,
+    limit: 9,
     total: 10,
     page: 1,
   });
@@ -39,7 +39,7 @@ function ListPage(props) {
   // filter
   const [filters, setFilters] = useState({
     _page: 1,
-    _limit: 10,
+    _limit: 9,
   });
 
   /** Controler */
@@ -58,7 +58,12 @@ function ListPage(props) {
     })();
   }, [filters]);
 
-  const handlePageChange = () => {};
+  const handlePageChange = (event, page) => {
+    setFilters((prevFilters) => ({
+      ...prevFilters,
+      _page: page,
+    }));
+  };
 
   return (
     <Box>
@@ -70,12 +75,13 @@ function ListPage(props) {
 
           <Grid item className={classes.right}>
             <Paper elevation={0}>
-              {loading ? <ProductSkeletonList /> : <ProductList data={productList} />}
+              {loading ? <ProductSkeletonList length={9} /> : <ProductList data={productList} />}
 
               <Pagination
                 color="primary"
                 count={Math.ceil(pagination.total / pagination.limit)}
                 page={pagination.page}
+                onChange={handlePageChange}
               ></Pagination>
             </Paper>
           </Grid>
