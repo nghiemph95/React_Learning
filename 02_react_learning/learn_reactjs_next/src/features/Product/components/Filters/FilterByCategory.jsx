@@ -16,8 +16,13 @@ function FilterByCategory({ onChange }) {
   useEffect(() => {
     (async () => {
       try {
-        const response = await categoryApi.getAll();
-        console.log({ response });
+        const list = await categoryApi.getAll();
+        setCategoryList(
+          list.map((x) => ({
+            id: x.id,
+            name: x.name,
+          }))
+        );
       } catch (error) {
         console.log('Failed to query data', error);
       }
@@ -33,7 +38,7 @@ function FilterByCategory({ onChange }) {
 
   return (
     <Box>
-      <Typography>DANH MUC SAN PHAM</Typography>
+      <Typography>DANH MỤC SẢN PHẨM</Typography>
 
       <ul>
         {categoryList.map((category) => (
