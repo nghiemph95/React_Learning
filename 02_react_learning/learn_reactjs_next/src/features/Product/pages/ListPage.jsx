@@ -57,6 +57,9 @@ function ListPage(props) {
       setLoading(false);
     })();
   }, [filters]);
+
+  const handlePageChange = () => {};
+
   return (
     <Box>
       <Container>
