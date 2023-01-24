@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import { Box, Typography } from '@material-ui/core';
 import { useEffect } from 'react';
 import categoryApi from 'api/categoryApi';
-import { info } from 'node-sass';
 
 FilterByCategory.propTypes = {
   onChange: PropTypes.func,
@@ -26,11 +25,11 @@ function FilterByCategory({ onChange }) {
   }, []);
 
   /** Controller */
-  // const handleCategoryClick = (category) => {
-  //   if (onChange) {
-  //     onChange(category.id);
-  //   }
-  // };
+  const handleCategoryClick = (category) => {
+    if (onChange) {
+      onChange(category.id);
+    }
+  };
 
   return (
     <Box>
@@ -38,7 +37,9 @@ function FilterByCategory({ onChange }) {
 
       <ul>
         {categoryList.map((category) => (
-          <li key={category.id}>{category.name}</li>
+          <li key={category.id} onClick={() => handleCategoryClick(category)}>
+            {category.name}
+          </li>
         ))}
       </ul>
     </Box>
