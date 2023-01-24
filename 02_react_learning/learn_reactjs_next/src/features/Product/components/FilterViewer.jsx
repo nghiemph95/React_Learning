@@ -6,7 +6,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexFlow: 'row nowrap',
-
+    padding: 0,
     alignItems: 'center',
 
     margin: theme.spacing(2, 0),
@@ -85,8 +85,27 @@ function FilterViewer({ filters = {}, onChange = null }) {
           <Chip
             label={x.getLabel(filters)}
             color={x.isActive(filters) ? 'secondary' : 'default'}
-            clickable={x.isRemovable ? null : () => {}}
-            onDelete={x.isRemovable ? () => {} : null}
+            clickable={!x.isRemovable}
+            onClick={
+              x.isRemovable
+                ? null
+                : () => {
+                    if (!onChange) return;
+
+                    const newFilters = x.onToggle(filters);
+                    onChange(newFilters);
+                  }
+            }
+            onDelete={
+              x.isRemovable
+                ? () => {
+                    if (!onChange) return;
+
+                    const newFilters = x.onRemove(filters);
+                    onChange(newFilters);
+                  }
+                : null
+            }
           />
         </li>
       ))}
