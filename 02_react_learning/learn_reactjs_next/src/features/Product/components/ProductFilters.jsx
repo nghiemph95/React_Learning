@@ -24,9 +24,14 @@ function ProductFilters({ filters, onChange }) {
     onChange(newFilters);
   };
 
+  const handlePriceChange = (values) => {
+    console.log(values);
+  };
+
   return (
     <Box>
       <FilterByCategory onChange={handleCategoryChange} />
+      <FilterByPrice onChange={handlePriceChange} />
     </Box>
   );
 }
