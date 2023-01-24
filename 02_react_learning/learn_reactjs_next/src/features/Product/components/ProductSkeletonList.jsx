@@ -11,6 +11,7 @@ ProductSkeletonList.defaultProps = {
   length: 6,
 };
 
+/** Function */
 function ProductSkeletonList({ length }) {
   return (
     <Box>
