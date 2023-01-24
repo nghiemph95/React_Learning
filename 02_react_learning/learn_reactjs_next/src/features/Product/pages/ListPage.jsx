@@ -17,7 +17,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   right: {
-    flex: '1 1 auto',
+    flex: '1 1 0',
   },
 }));
 
@@ -39,7 +39,7 @@ function ListPage(props) {
         console.log('Fail to query', error);
       }
 
-      // setLoading(false);
+      setLoading(false);
     })();
   }, []);
   return (
