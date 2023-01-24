@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, makeStyles } from '@material-ui/core';
+import { Box, Chip, makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -19,14 +19,79 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const FILTER_LIST = [
+  {
+    id: 1,
+    getLabel: (filters) => 'Giao hàng miễn phí',
+    isActive: (filters) => filters.isFreeShip,
+    isVisible: () => true,
+    isRemovable: false,
+    onRemove: () => {},
+    onToggle: (filters) => {
+      const newFilters = { ...filters };
+
+      if (newFilters.isFreeShip) {
+        delete newFilters.isFreeShip;
+      } else {
+        newFilters.isFreeShip = true;
+      }
+
+      return newFilters;
+    },
+  },
+  {
+    id: 2,
+    getLabel: (filters) => 'Có khuyến mãi',
+    isActive: (filters) => true,
+    isVisible: (filters) => true,
+    isRemovable: true,
+    onRemove: (filters) => {},
+    onToggle: (filters) => {},
+  },
+  {
+    id: 3,
+    getLabel: (filters) => 'Khoảng giá',
+    isActive: (filters) => true,
+    isVisible: (filters) => true,
+    isRemovable: true,
+    onRemove: (filters) => {},
+    onToggle: (filters) => {},
+  },
+  {
+    id: 4,
+    getLabel: (filters) => 'Dịch vụ',
+    isActive: (filters) => true,
+    isVisible: (filters) => true,
+    isRemovable: true,
+    onRemove: (filters) => {},
+    onToggle: (filters) => {},
+  },
+];
+
 FilterViewer.propTypes = {
   filters: PropTypes.object,
   onChange: PropTypes.func,
 };
 
-function FilterViewer({ filter = {}, onChange = null }) {
+function FilterViewer({ filters = {}, onChange = null }) {
+  /** Styles */
   const classes = useStyles();
-  return <Box component="ul" className={classes.root}></Box>;
+
+  /** Render */
+  return (
+    <Box component="ul" className={classes.root}>
+      {FILTER_LIST.filter((filter) => filter.isVisible(filters)).map((x) => (
+        <li key={x.id}>
+          <Chip
+            label={x.getLabel(filters)}
+            color={x.isActive(filters) ? 'secondary' : 'default'}
+            clickable={x.isRemovable ? null : () => {}}
+            onDelete={x.isRemovable ? () => {} : null}
+          />
+        </li>
+      ))}
+    </Box>
+  );
 }
 
 export default FilterViewer;
