@@ -30,7 +30,11 @@ function ListPage(props) {
   const [productList, setProductList] = useState([]);
   const [loading, setLoading] = useState(true);
   //pagination
-  const [pagination, setPagination] = useState({});
+  const [pagination, setPagination] = useState({
+    limit: 10,
+    total: 10,
+    page: 1,
+  });
 
   // filter
   const [filters, setFilters] = useState({
@@ -44,6 +48,7 @@ function ListPage(props) {
       try {
         const { data, pagination } = await productApi.getAll(filters);
         setProductList(data);
+        setPagination(pagination);
         console.log({ data, pagination });
       } catch (error) {
         console.log('Fail to query', error);
@@ -64,7 +69,11 @@ function ListPage(props) {
             <Paper elevation={0}>
               {loading ? <ProductSkeletonList /> : <ProductList data={productList} />}
 
-              <Pagination color="primary" count={5} page={2}></Pagination>
+              <Pagination
+                color="primary"
+                count={Math.ceil(pagination.total / pagination.limit)}
+                page={pagination.page}
+              ></Pagination>
             </Paper>
           </Grid>
         </Grid>
