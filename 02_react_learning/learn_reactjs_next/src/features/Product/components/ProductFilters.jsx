@@ -17,7 +17,6 @@ function ProductFilters({ filters, onChange }) {
     if (!onChange) return;
 
     const newFilters = {
-      ...filters,
       'category.id': newCategoryId,
     };
 
@@ -25,7 +24,7 @@ function ProductFilters({ filters, onChange }) {
   };
 
   const handlePriceChange = (values) => {
-    console.log(values);
+    if (onChange) onChange(values);
   };
 
   return (
