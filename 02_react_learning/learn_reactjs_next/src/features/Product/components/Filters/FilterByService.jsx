@@ -61,7 +61,7 @@ function FilterByService({ filters = {}, onChange }) {
             <FormControlLabel
               control={
                 <Checkbox
-                  checked={filters[service.value]}
+                  checked={Boolean(filters[service.value])}
                   onChange={handleChange}
                   name={service.value}
                   color="secondary"
