@@ -92,9 +92,9 @@ function ListPage(props) {
           </Grid>
 
           <Grid item className={classes.right}>
-            <ProductSort currentSort={filters._sort} onChange={handleSortChange} />
-
             <Paper elevation={0}>
+              <ProductSort currentSort={filters._sort} onChange={handleSortChange} />
+
               {loading ? <ProductSkeletonList length={9} /> : <ProductList data={productList} />}
 
               <Box className={classes.pagination}>

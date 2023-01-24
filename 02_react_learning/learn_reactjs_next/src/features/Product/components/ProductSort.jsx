@@ -20,7 +20,7 @@ function ProductSort({ currentSort, onChange }) {
       aria-label="disabled tabs example"
     >
       <Tab label="Giá thấp tới cao" value="salePrice:ASC"></Tab>
-      <Tab label="Giá cao tới thấp" value="salePrice:DESC"></Tab>
+      <Tab label="Giá cao xuống thấp" value="salePrice:DESC"></Tab>
     </Tabs>
   );
 }
