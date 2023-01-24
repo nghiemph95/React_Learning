@@ -1,14 +1,39 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box, Typography } from '@material-ui/core';
+import { Box, makeStyles, Typography } from '@material-ui/core';
 import { useEffect } from 'react';
 import categoryApi from 'api/categoryApi';
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: theme.spacing(2),
+  },
+
+  menu: {
+    padding: 0,
+    margin: 0,
+    listStyleType: 'none',
+
+    '& > li': {
+      marginTop: theme.spacing(1),
+      transition: 'all .25s',
+
+      '&:hover': {
+        color: 'red',
+        cursor: 'pointer',
+      },
+    },
+  },
+}));
 
 FilterByCategory.propTypes = {
   onChange: PropTypes.func,
 };
 
 function FilterByCategory({ onChange }) {
+  /** Styles */
+  const classes = useStyles();
+
   /** State */
   const [categoryList, setCategoryList] = useState([]);
 
@@ -37,13 +62,13 @@ function FilterByCategory({ onChange }) {
   };
 
   return (
-    <Box>
-      <Typography>DANH MỤC SẢN PHẨM</Typography>
+    <Box className={classes.root}>
+      <Typography variant="subtitle2">DANH MỤC SẢN PHẨM</Typography>
 
-      <ul>
+      <ul className={classes.menu}>
         {categoryList.map((category) => (
           <li key={category.id} onClick={() => handleCategoryClick(category)}>
-            {category.name}
+            <Typography variant="body2">{category.name}</Typography>
           </li>
         ))}
       </ul>
