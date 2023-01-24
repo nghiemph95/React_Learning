@@ -5,6 +5,7 @@ import { useEffect } from 'react';
 import productApi from 'api/productApi';
 import { useState } from 'react';
 import ProductSkeletonList from '../components/ProductSkeletonList';
+import ProductList from '../components/ProductList';
 
 ListPage.propTypes = {};
 
@@ -50,7 +51,7 @@ function ListPage(props) {
           </Grid>
 
           <Grid item className={classes.right}>
-            <Paper elevation={0}>{loading ? <ProductSkeletonList /> : <Typography>Right Column</Typography>}</Paper>
+            <Paper elevation={0}>{loading ? <ProductSkeletonList /> : <ProductList data={productList} />}</Paper>
           </Grid>
         </Grid>
       </Container>
