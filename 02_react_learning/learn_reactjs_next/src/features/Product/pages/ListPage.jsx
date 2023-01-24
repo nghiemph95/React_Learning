@@ -6,6 +6,7 @@ import productApi from 'api/productApi';
 import { useState } from 'react';
 import ProductSkeletonList from '../components/ProductSkeletonList';
 import ProductList from '../components/ProductList';
+import { Pagination } from '@material-ui/lab';
 
 ListPage.propTypes = {};
 
@@ -51,7 +52,11 @@ function ListPage(props) {
           </Grid>
 
           <Grid item className={classes.right}>
-            <Paper elevation={0}>{loading ? <ProductSkeletonList /> : <ProductList data={productList} />}</Paper>
+            <Paper elevation={0}>
+              {loading ? <ProductSkeletonList /> : <ProductList data={productList} />}
+
+              <Pagination color="primary" count={5} page={2}></Pagination>
+            </Paper>
           </Grid>
         </Grid>
       </Container>
