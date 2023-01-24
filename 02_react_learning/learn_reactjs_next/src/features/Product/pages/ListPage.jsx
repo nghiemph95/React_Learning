@@ -63,7 +63,7 @@ function ListPage(props) {
         const { data, pagination } = await productApi.getAll(filters);
         setProductList(data);
         setPagination(pagination);
-        console.log({ data, pagination });
+        console.log({ data, pagination, filters });
       } catch (error) {
         console.log('Fail to query', error);
       }

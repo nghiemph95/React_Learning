@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Chip, makeStyles } from '@material-ui/core';
+import { useMemo } from 'react';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -42,20 +43,30 @@ const FILTER_LIST = [
   {
     id: 2,
     getLabel: (filters) => 'Có khuyến mãi',
-    isActive: (filters) => true,
-    isVisible: (filters) => true,
+    isActive: () => true,
+    isVisible: (filters) => filters.isPromotion,
     isRemovable: true,
-    onRemove: (filters) => {},
-    onToggle: (filters) => {},
+    onRemove: (filters) => {
+      const newFilters = { ...filters };
+      delete newFilters.isPromotion;
+      return newFilters;
+    },
+    onToggle: () => {},
   },
   {
     id: 3,
-    getLabel: (filters) => 'Khoảng giá',
-    isActive: (filters) => true,
-    isVisible: (filters) => true,
+    getLabel: (filters) => `Từ ${filters.salePrice_gte} đến ${filters.salePrice_lte}`,
+    isActive: () => true,
+    isVisible: (filters) =>
+      Object.keys(filters).includes('salePrice_gte') && Object.keys(filters).includes('salePrice_lte'),
     isRemovable: true,
-    onRemove: (filters) => {},
-    onToggle: (filters) => {},
+    onRemove: (filters) => {
+      const newFilters = { ...filters };
+      delete newFilters.salePrice_gte;
+      delete newFilters.salePrice_lte;
+      return newFilters;
+    },
+    onToggle: () => {},
   },
   {
     id: 4,
@@ -77,15 +88,21 @@ function FilterViewer({ filters = {}, onChange = null }) {
   /** Styles */
   const classes = useStyles();
 
+  /** useMemo: khi props filters thay đổi thì mới re-render lại filter*/
+  const visibleFilters = useMemo(() => {
+    return FILTER_LIST.filter((filter) => filter.isVisible(filters));
+  }, [filters]);
+
   /** Render */
   return (
     <Box component="ul" className={classes.root}>
-      {FILTER_LIST.filter((filter) => filter.isVisible(filters)).map((x) => (
+      {visibleFilters.map((x) => (
         <li key={x.id}>
           <Chip
             label={x.getLabel(filters)}
             color={x.isActive(filters) ? 'secondary' : 'default'}
             clickable={!x.isRemovable}
+            size="small"
             onClick={
               x.isRemovable
                 ? null
