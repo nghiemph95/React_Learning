@@ -13,6 +13,7 @@ import ProductFilterSkeleton from '../components/ProductFilterSkeleton';
 import FilterViewer from '../components/FilterViewer';
 import { useHistory, useLocation } from 'react-router-dom';
 import queryString from 'query-string';
+import { useMemo } from 'react';
 
 ListPage.propTypes = {};
 
@@ -60,67 +61,117 @@ function ListPage(props) {
    * mặc dù object history ko thay đổi
    */
   const location = useLocation();
-  const queryParams = queryString.parse(location.search); // chuyển từ chuỗi thành object
+  // queryParams
+  const queryParams = useMemo(() => {
+    const params = queryString.parse(location.search); // chuyển từ chuỗi thành object
+    // true -> 'true'
+    // { isPromotion: 'true'}
+    return {
+      ...params,
+      _page: Number.parseInt(params._page) || 1,
+      _limit: Number.parseInt(params._limit) || 9,
+      _sort: params._sort || 'salePrice:ASC',
+      isPromotion: params.isPromotion === 'true',
+      isFreeShip: params.isFreeShip === 'true',
+    };
+  }, [location.search]);
+
+  console.log({ queryParams });
 
   // filter
-  const [filters, setFilters] = useState(() => ({
-    ...queryParams,
-    _page: Number.parseInt(queryParams._page) || 1,
-    _limit: Number.parseInt(queryParams._limit) || 9,
-    _sort: queryParams._sort || 'salePrice:ASC',
-  }));
+  // const [filters, setFilters] = useState(() => ({
+  //   ...queryParams,
+  //   _page: Number.parseInt(queryParams._page) || 1,
+  //   _limit: Number.parseInt(queryParams._limit) || 9,
+  //   _sort: queryParams._sort || 'salePrice:ASC',
+  // }));
 
   /** Controler */
 
-  useEffect(() => {
-    // sync filters to URL
-    history.push({
-      pathname: history.location.pathname,
-      search: queryString.stringify(filters), // chuyển từ object thành chuỗi
-    });
-    /** không sử dụng location trong indicator vì mỗi lần history.push sẽ làm location thay đổi
-     * dẫn đến useEffect bị gọi lai vô hạn lần
-     */
-  }, [history, filters]);
+  // useEffect(() => {
+  //   // sync filters to URL
+  //   history.push({
+  //     pathname: history.location.pathname,
+  //     search: queryString.stringify(filters), // chuyển từ object thành chuỗi
+  //   });
+  //   /** không sử dụng location trong indicator vì mỗi lần history.push sẽ làm location thay đổi
+  //    * dẫn đến useEffect bị gọi lai vô hạn lần
+  //    */
+  // }, [history, filters]);
 
   useEffect(() => {
     (async () => {
       try {
-        const { data, pagination } = await productApi.getAll(filters);
+        const { data, pagination } = await productApi.getAll(queryParams);
         setProductList(data);
         setPagination(pagination);
-        console.log({ data, pagination, filters });
+        console.log({ data, pagination, queryParams });
       } catch (error) {
         console.log('Fail to query', error);
       }
 
       setLoading(false);
     })();
-  }, [filters]);
+  }, [queryParams]);
 
   const handlePageChange = (event, page) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
+    // setFilters((prevFilters) => ({
+    //   ...prevFilters,
+    //   _page: page,
+    // }));
+
+    const filters = {
+      ...queryParams,
       _page: page,
-    }));
+    };
+
+    history.push({
+      pathname: history.location.pathname,
+      search: queryString.stringify(filters), // chuyển từ object thành chuỗi
+    });
   };
 
   const handleSortChange = (newSortValue) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
+    // setFilters((prevFilters) => ({
+    //   ...prevFilters,
+    //   _sort: newSortValue,
+    // }));
+
+    const filters = {
+      ...queryParams,
       _sort: newSortValue,
-    }));
+    };
+
+    history.push({
+      pathname: history.location.pathname,
+      search: queryString.stringify(filters), // chuyển từ object thành chuỗi
+    });
   };
 
   const handleFiltersChange = (newFilters) => {
-    setFilters((prevFilters) => ({
-      ...prevFilters,
+    // setFilters((prevFilters) => ({
+    //   ...prevFilters,
+    //   ...newFilters,
+    // }));
+
+    const filters = {
+      ...queryParams,
       ...newFilters,
-    }));
+    };
+
+    history.push({
+      pathname: history.location.pathname,
+      search: queryString.stringify(filters), // chuyển từ object thành chuỗi
+    });
   };
 
   const setNewFilters = (newFilters) => {
-    setFilters(newFilters);
+    // setFilters(newFilters);
+
+    history.push({
+      pathname: history.location.pathname,
+      search: queryString.stringify(newFilters), // chuyển từ object thành chuỗi
+    });
   };
 
   return (
@@ -132,15 +183,15 @@ function ListPage(props) {
               {loading ? (
                 <ProductFilterSkeleton />
               ) : (
-                <ProductFilters filters={filters} onChange={handleFiltersChange} />
+                <ProductFilters filters={queryParams} onChange={handleFiltersChange} />
               )}
             </Paper>
           </Grid>
 
           <Grid item className={classes.right}>
             <Paper elevation={0}>
-              <ProductSort currentSort={filters._sort} onChange={handleSortChange} />
-              <FilterViewer filters={filters} onChange={setNewFilters} />
+              <ProductSort currentSort={queryParams._sort} onChange={handleSortChange} />
+              <FilterViewer filters={queryParams} onChange={setNewFilters} />
 
               {loading ? <ProductSkeletonList length={9} /> : <ProductList data={productList} />}
 
