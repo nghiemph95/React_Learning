@@ -11,6 +11,8 @@ import ProductSort from '../components/ProductSort';
 import ProductFilters from '../components/ProductFilters';
 import ProductFilterSkeleton from '../components/ProductFilterSkeleton';
 import FilterViewer from '../components/FilterViewer';
+import { useHistory, useLocation } from 'react-router-dom';
+import queryString from 'query-string';
 
 ListPage.propTypes = {};
 
@@ -49,14 +51,38 @@ function ListPage(props) {
     page: 1,
   });
 
+  // useHistory
+  const history = useHistory();
+
+  // useLocation
+  /** Với location, mỗi lần URL thay đổi thì sẽ trả về object location mới
+   * nhưng history thì ko thay đổi, nhưng nó có thể thay đổi giá trị bên trong history
+   * mặc dù object history ko thay đổi
+   */
+  const location = useLocation();
+  const queryParams = queryString.parse(location.search); // chuyển từ chuỗi thành object
+
   // filter
-  const [filters, setFilters] = useState({
-    _page: 1,
-    _limit: 9,
-    _sort: 'salePrice:ASC',
-  });
+  const [filters, setFilters] = useState(() => ({
+    ...queryParams,
+    _page: Number.parseInt(queryParams._page) || 1,
+    _limit: Number.parseInt(queryParams._limit) || 9,
+    _sort: queryParams._sort || 'salePrice:ASC',
+  }));
 
   /** Controler */
+
+  useEffect(() => {
+    // sync filters to URL
+    history.push({
+      pathname: history.location.pathname,
+      search: queryString.stringify(filters), // chuyển từ object thành chuỗi
+    });
+    /** không sử dụng location trong indicator vì mỗi lần history.push sẽ làm location thay đổi
+     * dẫn đến useEffect bị gọi lai vô hạn lần
+     */
+  }, [history, filters]);
+
   useEffect(() => {
     (async () => {
       try {
