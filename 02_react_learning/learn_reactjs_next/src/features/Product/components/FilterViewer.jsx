@@ -70,14 +70,14 @@ const FILTER_LIST = [
   },
   {
     id: 4,
-    getLabel: (filters) => 'Test',
+    getLabel: (filters) => filters['category.name'],
     isActive: () => true,
     isVisible: (filters) => Object.keys(filters).includes('category.name'),
     isRemovable: true,
     onRemove: (filters) => {
       const newFilters = { ...filters };
-      delete newFilters.category.name;
-      delete newFilters.category.id;
+      delete newFilters['category.name'];
+      delete newFilters['category.id'];
       return newFilters;
     },
     onToggle: () => {},
