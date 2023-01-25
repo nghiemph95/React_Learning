@@ -14,11 +14,12 @@ function ProductFilters({ filters, onChange }) {
   /** Khi FilterByCategory thay đổi, nó sẽ truyền newCategoryId lên handleCategoryChange và
    * sau đó báo lên thằng cha
    */
-  const handleCategoryChange = (newCategoryId) => {
+  const handleCategoryChange = (newCategoryId, categoryName) => {
     if (!onChange) return;
 
     const newFilters = {
       'category.id': newCategoryId,
+      'category.name': categoryName,
     };
 
     onChange(newFilters);

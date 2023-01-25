@@ -70,12 +70,17 @@ const FILTER_LIST = [
   },
   {
     id: 4,
-    getLabel: (filters) => 'Dịch vụ',
-    isActive: (filters) => true,
-    isVisible: (filters) => true,
+    getLabel: (filters) => 'Test',
+    isActive: () => true,
+    isVisible: (filters) => Object.keys(filters).includes('category.name'),
     isRemovable: true,
-    onRemove: (filters) => {},
-    onToggle: (filters) => {},
+    onRemove: (filters) => {
+      const newFilters = { ...filters };
+      delete newFilters.category.name;
+      delete newFilters.category.id;
+      return newFilters;
+    },
+    onToggle: () => {},
   },
 ];
 
