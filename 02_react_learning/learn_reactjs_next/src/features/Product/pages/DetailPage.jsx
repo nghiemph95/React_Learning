@@ -25,13 +25,14 @@ function DetailPage() {
 
   /** Render */
   return (
-    <Box>
+    <Box className={classes.root}>
       <Container>
         <Paper elevation={0}>
           <Grid container>
             <Grid item className={classes.left}>
               Thumbnail
             </Grid>
+
             <Grid item className={classes.right}>
               Product infor
             </Grid>
