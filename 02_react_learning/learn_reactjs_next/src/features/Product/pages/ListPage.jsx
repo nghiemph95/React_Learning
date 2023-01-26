@@ -76,8 +76,6 @@ function ListPage(props) {
     };
   }, [location.search]);
 
-  console.log({ queryParams });
-
   // filter
   // const [filters, setFilters] = useState(() => ({
   //   ...queryParams,

@@ -2,6 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
 import ProductThumbnail from '../components/ProductThumbnail';
+import { useRouteMatch } from 'react-router-dom';
+import useProductDetail from '../hooks/useProductDetail';
+import ProductInfo from '../components/ProductInfo';
 
 DetailPage.propTypes = {};
 
@@ -24,6 +27,18 @@ function DetailPage() {
   /** Styles */
   const classes = useStyles();
 
+  /** Get productId from params */
+  const {
+    params: { productId },
+  } = useRouteMatch();
+
+  /** Query data from productId */
+  const { product, loading } = useProductDetail(productId);
+
+  if (loading) {
+    return <Box>Loading</Box>;
+  }
+
   /** Render */
   return (
     <Box className={classes.root}>
@@ -31,11 +46,11 @@ function DetailPage() {
         <Paper elevation={0}>
           <Grid container>
             <Grid item className={classes.left}>
-              <ProductThumbnail product={{}} />
+              <ProductThumbnail product={product} />
             </Grid>
 
             <Grid item className={classes.right}>
-              Product infor
+              <ProductInfo product={product} />
             </Grid>
           </Grid>
         </Paper>
