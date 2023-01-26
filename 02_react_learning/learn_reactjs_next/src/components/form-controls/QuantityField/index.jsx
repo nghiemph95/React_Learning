@@ -1,4 +1,4 @@
-import { Box, FormHelperText, IconButton } from '@material-ui/core';
+import { Box, FormHelperText, IconButton, makeStyles, Typography } from '@material-ui/core';
 import FormControl from '@material-ui/core/FormControl';
 import InputLabel from '@material-ui/core/InputLabel';
 import OutlinedInput from '@material-ui/core/OutlinedInput';
@@ -15,7 +15,21 @@ QuantityField.propTypes = {
   disabled: PropTypes.bool,
 };
 
+const useStyles = makeStyles((theme) => ({
+  root: {},
+
+  box: {
+    display: 'flex',
+    flexFlow: 'row nowrap',
+    alignItems: 'center',
+    maxWidth: '200px',
+  },
+}));
 function QuantityField(props) {
+  /** Styles */
+  const classes = useStyles();
+
+  /** Props */
   const { form, name, label, disabled } = props;
 
   /** Lấy thông tin Error ra */
@@ -26,14 +40,14 @@ function QuantityField(props) {
 
   return (
     <div>
-      <FormControl error={hasError} fullWidth margin="normal" variant="outlined">
-        <InputLabel htmlFor={name}>{label}</InputLabel>
+      <FormControl error={hasError} fullWidth margin="normal" variant="outlined" size="small">
+        <Typography>{label}</Typography>
 
         <Controller
           name={name}
           control={form.control}
           render={({ onChange, onBlur, value, name }) => (
-            <Box>
+            <Box className={classes.box}>
               <IconButton onClick={() => setValue(name, Number.parseInt(value) ? Number.parseInt(value) - 1 : 1)}>
                 <RemoveCircleOutline />
               </IconButton>
@@ -41,7 +55,6 @@ function QuantityField(props) {
               <OutlinedInput
                 id={name}
                 type="number"
-                label={label}
                 disabled={disabled}
                 error={!!hasError}
                 value={value}
