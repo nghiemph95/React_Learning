@@ -1,9 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-AddToCartForm.propTypes = {};
+AddToCartForm.propTypes = {
+  onSubmit: PropTypes.func,
+};
 
-function AddToCartForm(props) {
+function AddToCartForm({ onSubmit }) {
   return <div></div>;
 }
 

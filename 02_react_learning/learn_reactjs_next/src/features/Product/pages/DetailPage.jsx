@@ -40,6 +40,11 @@ function DetailPage() {
     return <Box>Loading</Box>;
   }
 
+  /** Controller */
+  const handleAddToCartSubmit = (formValues) => {
+    console.log('Form submit: ', formValues);
+  };
+
   /** Render */
   return (
     <Box className={classes.root}>
@@ -52,7 +57,7 @@ function DetailPage() {
 
             <Grid item className={classes.right}>
               <ProductInfo product={product} />
-              <AddToCartForm />
+              <AddToCartForm onSubmit={handleAddToCartSubmit} />
             </Grid>
           </Grid>
         </Paper>
