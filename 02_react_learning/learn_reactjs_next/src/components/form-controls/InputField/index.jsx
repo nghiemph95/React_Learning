@@ -24,7 +24,6 @@ function InputField(props) {
     <Controller
       name={name}
       control={form.control}
-      as={TextField}
       render={({ onChange, onBlur, value, name }) => (
         <TextField
           margin="normal"
