@@ -8,11 +8,14 @@ const useStyles = makeStyles((theme) => ({
   root: {},
 
   left: {
-    width: '250px',
+    width: '400px',
+    padding: theme.spacing(1.5),
+    borderRight: `1px solid ${theme.palette.grey[300]}`,
   },
 
   right: {
     flex: '1 1 0',
+    padding: theme.spacing(1.5),
   },
 }));
 
