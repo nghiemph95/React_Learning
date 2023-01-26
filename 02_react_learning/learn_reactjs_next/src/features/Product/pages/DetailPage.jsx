@@ -2,11 +2,14 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
 import ProductThumbnail from '../components/ProductThumbnail';
-import { useRouteMatch } from 'react-router-dom';
+import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import useProductDetail from '../hooks/useProductDetail';
 import ProductInfo from '../components/ProductInfo';
 import AddToCartForm from '../components/AddToCartForm';
 import ProductMenu from '../components/ProductMenu';
+import ProductDescription from '../components/ProductDescription';
+import ProductAdditional from '../components/ProductAdditional';
+import ProductReviews from '../components/ProductReviews';
 
 DetailPage.propTypes = {};
 
@@ -32,6 +35,7 @@ function DetailPage() {
   /** Get productId from params */
   const {
     params: { productId },
+    url,
   } = useRouteMatch();
 
   /** Query data from productId */
@@ -64,6 +68,15 @@ function DetailPage() {
         </Paper>
 
         <ProductMenu />
+
+        <Switch>
+          <Route exact path={url}>
+            <ProductDescription product={product} />
+          </Route>
+
+          <Route path={`${url}/additional`} component={ProductAdditional} />
+          <Route path={`${url}/reviewsß`} component={ProductReviews} />
+        </Switch>
       </Container>
     </Box>
   );
