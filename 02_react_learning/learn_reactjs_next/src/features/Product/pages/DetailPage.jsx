@@ -14,7 +14,9 @@ import ProductReviews from '../components/ProductReviews';
 DetailPage.propTypes = {};
 
 const useStyles = makeStyles((theme) => ({
-  root: {},
+  root: {
+    paddingBottom: theme.spacing(3),
+  },
 
   left: {
     width: '400px',
@@ -27,7 +29,12 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(1.5),
   },
 
-  loading: {},
+  loading: {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    width: '100%',
+  },
 }));
 
 function DetailPage() {
