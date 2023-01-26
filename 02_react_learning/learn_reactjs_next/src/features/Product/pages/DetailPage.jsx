@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Box, Container, Grid, makeStyles, Paper } from '@material-ui/core';
+import { Box, Container, Grid, LinearProgress, makeStyles, Paper } from '@material-ui/core';
 import ProductThumbnail from '../components/ProductThumbnail';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
 import useProductDetail from '../hooks/useProductDetail';
@@ -26,6 +26,8 @@ const useStyles = makeStyles((theme) => ({
     flex: '1 1 0',
     padding: theme.spacing(1.5),
   },
+
+  loading: {},
 }));
 
 function DetailPage() {
@@ -42,7 +44,11 @@ function DetailPage() {
   const { product, loading } = useProductDetail(productId);
 
   if (loading) {
-    return <Box>Loading</Box>;
+    return (
+      <Box className={classes.loading}>
+        <LinearProgress />;
+      </Box>
+    );
   }
 
   /** Controller */
