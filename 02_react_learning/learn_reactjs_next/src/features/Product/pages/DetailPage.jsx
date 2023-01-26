@@ -5,6 +5,7 @@ import ProductThumbnail from '../components/ProductThumbnail';
 import { useRouteMatch } from 'react-router-dom';
 import useProductDetail from '../hooks/useProductDetail';
 import ProductInfo from '../components/ProductInfo';
+import AddToCartForm from '../components/AddToCartForm';
 
 DetailPage.propTypes = {};
 
@@ -51,6 +52,7 @@ function DetailPage() {
 
             <Grid item className={classes.right}>
               <ProductInfo product={product} />
+              <AddToCartForm />
             </Grid>
           </Grid>
         </Paper>
