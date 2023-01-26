@@ -25,13 +25,20 @@ function InputField(props) {
       name={name}
       control={form.control}
       as={TextField}
-      margin="normal"
-      variant="outlined"
-      fullWidth
-      label={label}
-      disabled={disabled}
-      error={!!hasError}
-      helperText={errors[name]?.message}
+      render={({ onChange, onBlur, value, name }) => (
+        <TextField
+          margin="normal"
+          variant="outlined"
+          fullWidth
+          label={label}
+          disabled={disabled}
+          error={!!hasError}
+          helperText={errors[name]?.message}
+          name={name}
+          onChange={onChange}
+          onBlur={onBlur}
+        />
+      )}
     />
   );
 }
