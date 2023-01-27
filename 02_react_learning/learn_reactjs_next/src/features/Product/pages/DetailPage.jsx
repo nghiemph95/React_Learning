@@ -1,15 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import { Box, Container, Grid, LinearProgress, makeStyles, Paper } from '@material-ui/core';
-import ProductThumbnail from '../components/ProductThumbnail';
+import { addToCart } from 'features/Cart/cartSlice';
+import React from 'react';
+import { useDispatch } from 'react-redux';
 import { Route, Switch, useRouteMatch } from 'react-router-dom';
-import useProductDetail from '../hooks/useProductDetail';
-import ProductInfo from '../components/ProductInfo';
 import AddToCartForm from '../components/AddToCartForm';
-import ProductMenu from '../components/ProductMenu';
-import ProductDescription from '../components/ProductDescription';
 import ProductAdditional from '../components/ProductAdditional';
+import ProductDescription from '../components/ProductDescription';
+import ProductInfo from '../components/ProductInfo';
+import ProductMenu from '../components/ProductMenu';
 import ProductReviews from '../components/ProductReviews';
+import ProductThumbnail from '../components/ProductThumbnail';
+import useProductDetail from '../hooks/useProductDetail';
 
 DetailPage.propTypes = {};
 
@@ -49,6 +50,7 @@ function DetailPage() {
 
   /** Query data from productId */
   const { product, loading } = useProductDetail(productId);
+  const dispatch = useDispatch();
 
   if (loading) {
     return (
@@ -59,8 +61,14 @@ function DetailPage() {
   }
 
   /** Controller */
-  const handleAddToCartSubmit = (formValues) => {
-    console.log('Form submit: ', formValues);
+  const handleAddToCartSubmit = ({ quantity }) => {
+    const action = addToCart({
+      id: product.id,
+      product,
+      quantity,
+    });
+    console.log({ action });
+    dispatch(action);
   };
 
   /** Render */
