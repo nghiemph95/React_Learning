@@ -12,9 +12,9 @@ const useStyles = makeStyles((theme) => ({
   },
 
   left: {
-    width: '400px',
+    width: '850px',
     padding: theme.spacing(1.5),
-    borderRight: `1px solid ${theme.palette.grey[300]}`,
+    borderRight: `15px solid ${theme.palette.grey[100]}`,
   },
 
   right: {
@@ -33,6 +33,10 @@ function CartFeature(props) {
 
   const cartTotalAmount = useSelector(cartTotalSelector);
   const cartCountProduct = useSelector(cartItemsCountSelector);
+
+  const product = useSelector((state) => state.cart.cartItems);
+
+  console.log(product ? product[0].id : '');
 
   return (
     <Box className={classes.root}>
