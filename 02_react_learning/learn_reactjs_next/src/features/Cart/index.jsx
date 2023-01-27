@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
 import { cartItemsCountSelector, cartTotalSelector } from './selectors';
 import { Box, Container, Grid, makeStyles, Paper, Typography } from '@material-ui/core';
+import { formatPrice } from 'utils';
 
 CartFeature.propTypes = {};
 
@@ -12,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   left: {
-    width: '850px',
+    width: '700px',
     padding: theme.spacing(1.5),
     borderRight: `15px solid ${theme.palette.grey[100]}`,
   },
@@ -36,8 +37,6 @@ function CartFeature(props) {
 
   const product = useSelector((state) => state.cart.cartItems);
 
-  console.log(product ? product[0].id : '');
-
   return (
     <Box className={classes.root}>
       <Container>
@@ -50,7 +49,7 @@ function CartFeature(props) {
         <Paper elevation={0}>
           <Grid container>
             <Grid item className={classes.left}>
-              Left
+              {formatPrice(cartTotalAmount)}
             </Grid>
 
             <Grid item className={classes.right}>
