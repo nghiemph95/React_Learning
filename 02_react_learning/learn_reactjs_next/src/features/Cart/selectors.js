@@ -8,7 +8,7 @@ const cartItemSelector = (state) => state.cart.cartItems;
  * 2. Phần kết quả: kết quả tính toán
  */
 export const cartItemsCountSelector = createSelector(cartItemSelector, (cartItems) =>
-  cartItems.reduce((count, item) => count + item, 0)
+  cartItems.reduce((count, item) => count + item.quantity, 0)
 );
 
 /** Calculate total of cart */
