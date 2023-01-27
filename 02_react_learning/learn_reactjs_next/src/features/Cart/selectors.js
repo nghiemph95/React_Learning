@@ -13,7 +13,7 @@ export const cartItemsCountSelector = createSelector(cartItemSelector, (cartItem
 
 /** Calculate total of cart */
 export const cartTotalSelector = createSelector(cartItemSelector, (cartItems) =>
-  cartItems.reduce((total, item) => total + item.salePrice * item.quantity, 0)
+  cartItems.reduce((total, item) => total + item.product.salePrice * item.quantity, 0)
 );
 
 /** Lưu ý: mỗi lần gặp state có thể tính toán và phụ thuộc vào state khác

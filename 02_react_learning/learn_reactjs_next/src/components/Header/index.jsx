@@ -14,7 +14,7 @@ import { logout } from 'features/Auth/userSlice';
 import { cartItemsCountSelector } from 'features/Cart/selectors';
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useHistory } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,6 +49,7 @@ export default function Header() {
   const loggedInUser = useSelector((state) => state.user.current);
   const isLoggedIn = !!loggedInUser.id;
   const cartItemCount = useSelector(cartItemsCountSelector);
+  const history = useHistory();
   /** State */
   const [open, setOpen] = useState(false);
   const [mode, setMode] = useState(MODE.LOGIN);
@@ -73,9 +74,13 @@ export default function Header() {
 
   const handleLogoutClick = () => {
     const action = logout();
-
     dispatch(action);
   };
+
+  const handleCartClick = () => {
+    history.push('/cart');
+  };
+
   const classes = useStyles();
 
   return (
@@ -104,7 +109,7 @@ export default function Header() {
             </Button>
           )}
 
-          <IconButton aria-label="show 4 new mails" color="inherit">
+          <IconButton aria-label="show 4 new mails" color="inherit" onClick={handleCartClick}>
             <Badge badgeContent={cartItemCount} color="secondary">
               <ShoppingCart />
             </Badge>
