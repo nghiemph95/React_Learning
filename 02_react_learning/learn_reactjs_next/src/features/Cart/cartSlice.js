@@ -46,7 +46,7 @@ const cartSlice = createSlice({
       }
     },
 
-    // Action
+    // Action removeFromCart
     removeFromCart(state, action) {
       const idNeedToRemove = action.payload;
 
