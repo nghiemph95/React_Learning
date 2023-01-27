@@ -7,14 +7,17 @@ const cartSlice = createSlice({
     cartItems: [],
   },
   reducers: {
+    // Action showMiniCart
     showMiniCart(state, action) {
       state.showMiniCart = true;
     },
 
+    // Action hideMiniCart
     hideMiniCart(state, action) {
       state.showMiniCart = false;
     },
 
+    // Action addToCart
     addToCart(state, action) {
       /** Có 2 TH: Add mới và update số lượng hiện tại */
       const newItem = action.payload; // truyền lên thông tin đầy đủ (id, product, quantity)
@@ -30,7 +33,8 @@ const cartSlice = createSlice({
     },
 
     /** Cập nhật số lượng sản phẩm */
-    setQuantify(state, action) {
+    // Action setQuantity
+    setQuantity(state, action) {
       /** Truyền lên 1 cái payload có thông tin id và quantity */
       const { id, quantity } = action.payload;
 
@@ -42,6 +46,7 @@ const cartSlice = createSlice({
       }
     },
 
+    // Action
     removeFromCart(state, action) {
       const idNeedToRemove = action.payload;
 
@@ -58,6 +63,6 @@ const cartSlice = createSlice({
 const { actions, reducer } = cartSlice;
 
 /** Props action */
-export const { showMiniCart, hideMiniCart } = actions; // Named export
+export const { showMiniCart, hideMiniCart, addToCart, setQuantity, removeFromCart } = actions; // Named export
 
 export default reducer; // default export
