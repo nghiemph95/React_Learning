@@ -12,7 +12,7 @@ Product.propTypes = {
 function Product({ product }) {
   const thumbnailUrl = product.thumbnail ? `${STATIC_HOST}${product.thumbnail?.url}` : THUMBNAIL_PLACEHOLDER;
 
-  /** Sử dụng history để navigate */
+  /** Sử dụng history để navigate để chuyển trang khi click vào sản phẩm*/
   const history = useHistory();
   const handleClick = () => {
     history.push(`/products/${product.id}`);
