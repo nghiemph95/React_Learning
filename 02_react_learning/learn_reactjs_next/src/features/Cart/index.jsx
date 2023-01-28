@@ -33,12 +33,15 @@ function CartFeature(props) {
   /** Styles */
   const classes = useStyles();
 
+  /** Get data */
   const cartTotalAmount = useSelector(cartTotalSelector);
   const cartCountProduct = useSelector(cartItemsCountSelector);
 
   const product = useSelector((state) => state.cart.cartItems);
 
-  const arr = product.filter((x) => x.id);
+  console.log('product', product);
+
+  const arr = product.find((x) => x.product === 'product');
 
   console.log('arr', arr);
 
