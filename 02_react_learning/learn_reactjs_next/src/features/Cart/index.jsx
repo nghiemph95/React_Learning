@@ -1,10 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { useSelector } from 'react-redux';
-import { cartItemsCountSelector, cartTotalSelector } from './selectors';
 import { Box, Container, Grid, makeStyles, Paper, Typography } from '@material-ui/core';
-import { formatPrice } from 'utils';
 import ProductThumbnail from 'features/Product/components/ProductThumbnail';
+import React from 'react';
+import { useSelector } from 'react-redux';
+import { formatPrice } from 'utils';
+import { cartItemsCountSelector, cartTotalSelector } from './selectors';
 
 CartFeature.propTypes = {};
 
