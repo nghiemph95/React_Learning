@@ -37,13 +37,11 @@ function CartFeature(props) {
   const cartTotalAmount = useSelector(cartTotalSelector);
   const cartCountProduct = useSelector(cartItemsCountSelector);
 
-  const product = useSelector((state) => state.cart.cartItems);
+  const productList = useSelector((state) => state.cart.cartItems);
 
-  console.log('product', product);
+  const products = productList.map((x) => x?.product);
 
-  const arr = product.find((x) => x.product === 'product');
-
-  console.log('arr', arr);
+  console.log('newArr', products);
 
   return (
     <Box className={classes.root}>
@@ -58,7 +56,15 @@ function CartFeature(props) {
           <Grid container>
             <Grid item className={classes.left}>
               {formatPrice(cartTotalAmount)}
-              <ProductThumbnail product={product} />
+            </Grid>
+
+            <Grid container className={classes.left}>
+              {products.map((product) => (
+                <Grid item key={product.id}>
+                  <ProductThumbnail product={product} />
+                  {formatPrice(product.salePrice)}
+                </Grid>
+              ))}
             </Grid>
 
             <Grid item className={classes.right}>
