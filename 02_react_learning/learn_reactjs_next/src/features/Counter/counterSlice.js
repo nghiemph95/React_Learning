@@ -17,6 +17,6 @@ const counterSlice = createSlice({
 const { actions, reducer } = counterSlice;
 
 /** Props action */
-export const { increase, decrease } = actions; // Named export
+export const { increase, decrease } = actions; // Named exporttt
 
 export default reducer; // default export
