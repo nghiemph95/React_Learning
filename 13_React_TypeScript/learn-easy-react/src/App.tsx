@@ -1,11 +1,17 @@
 import { useState } from 'react';
 import './App.css';
-import { Student } from './features/labs/Student';
+import { StudentCard } from './features/labs/Student';
+import { Student } from './models/student';
 
 function App() {
+  const nghiem: Student = {
+    name: 'Nghiem',
+    age: 3,
+  };
+
   return (
     <div>
-      <Student name="Nghiem" age={18} isHero hobbyList={['eat', 'sleep', 'code']} sayHello={() => {}} />
+      <StudentCard student={nghiem} />
     </div>
   );
 }

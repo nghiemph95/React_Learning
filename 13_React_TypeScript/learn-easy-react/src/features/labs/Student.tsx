@@ -1,14 +1,13 @@
 import * as React from 'react';
+import { Student } from '../../models';
 
-export interface StudentProps {
-  name?: string;
-  age: number;
-  isHero?: boolean;
-  hobbyList: string[]; // mảng các string
-  sayHello: () => void; // func ko nhận tham số và cũng ko trả về gì cả
+export interface StudentCardProps {
+  student: Student;
 }
 
-export function Student({ name = '', isHero = false }: StudentProps) {
+export function StudentCard({ student }: StudentCardProps) {
+  const { name, isHero } = student;
+
   return (
     <div>
       Student: {name} {isHero ? 'hero' : 'no-hero'}
