@@ -1,7 +1,9 @@
 import * as React from 'react';
 
-export interface MyTextProps {}
+export interface MyTextProps {
+  children?: React.ReactNode;
+}
 
-export function MyText(props: MyTextProps) {
-  return <div>text</div>;
+export function MyText({ children }: MyTextProps) {
+  return <div>{children}</div>;
 }
