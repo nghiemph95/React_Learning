@@ -29,6 +29,9 @@ function App() {
   return (
     <div>
       {loading && <p>loading...</p>}
+      {loading ? <p>loading...</p> : <p>data ready</p>}
+      <p>{loading ? 'loading...' : 'data ready'}</p>
+
       <MainLayout>
         <StudentCard student={nghiem} onClick={handleStudentClick} />
       </MainLayout>
