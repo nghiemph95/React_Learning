@@ -47,7 +47,7 @@ function App() {
           <Widget title="Earning Overview">Chart 1</Widget>
         </div>
         <div>
-          <Widget title="Earning Overview">Chart 2</Widget>
+          <Widget title="Revenue Source">Chart 2</Widget>
         </div>
         <div>
           <Widget title="Earning Overview">Chart 3</Widget>
