@@ -24,13 +24,20 @@ function App() {
     console.log('Student Click');
   }
 
-  if (loading) return <p>loading...</p>;
+  // if (loading) return <p>loading...</p>;
 
   return (
     <div>
       {loading && <p>loading...</p>}
       {loading ? <p>loading...</p> : <p>data ready</p>}
       <p>{loading ? 'loading...' : 'data ready'}</p>
+
+      {true && 'show true'}
+      {false && 'show false'}
+      {'' && 'show empty'}
+      {'0' && 'show zero string'}
+      {[].length > 0 && 'show zero'}
+      {Boolean(NaN) && 'show Nan'}
 
       <MainLayout>
         <StudentCard student={nghiem} onClick={handleStudentClick} />
