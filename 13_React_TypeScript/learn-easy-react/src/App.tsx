@@ -26,9 +26,21 @@ function App() {
 
   // if (loading) return <p>loading...</p>;
 
+  /** List rendering */
+  const studentList = [
+    { id: 1, name: 'easey' },
+    { id: 5, name: 'frontend' },
+  ];
+
   return (
     <div>
-      {loading && <p>loading...</p>}
+      <ul>
+        {studentList.map((student) => (
+          <li key={student.id}>{student.name}</li>
+        ))}
+      </ul>
+
+      {/* {loading && <p>loading...</p>}
       {loading ? <p>loading...</p> : <p>data ready</p>}
       <p>{loading ? 'loading...' : 'data ready'}</p>
 
@@ -76,7 +88,7 @@ function App() {
         <div>
           <Widget title="Earning Overview">Chart 4</Widget>
         </div>
-      </div>
+      </div> */}
     </div>
   );
 }
