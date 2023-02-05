@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Widget from './components/common/Widget';
 import MainLayout from './components/Layout/MainLayout';
@@ -7,6 +7,14 @@ import { StudentCard } from './features/labs/Student';
 import { Student } from './models/student';
 
 function App() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(true);
+    }, 2000);
+  }, []);
+
   const nghiem: Student = {
     name: 'Nghiem',
     age: 3,
@@ -15,6 +23,8 @@ function App() {
   function handleStudentClick(student: Student) {
     console.log('Student Click');
   }
+
+  if (loading) return <p>loading...</p>;
 
   return (
     <div>
