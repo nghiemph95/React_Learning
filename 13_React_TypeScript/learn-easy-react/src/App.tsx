@@ -28,6 +28,7 @@ function App() {
 
   return (
     <div>
+      {loading && <p>loading...</p>}
       <MainLayout>
         <StudentCard student={nghiem} onClick={handleStudentClick} />
       </MainLayout>
