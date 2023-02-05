@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import './App.css';
 import Widget from './components/common/Widget';
 import MainLayout from './components/Layout/MainLayout';
@@ -27,6 +27,16 @@ function App() {
   // if (loading) return <p>loading...</p>;
 
   /** List rendering */
+  /** Khi render ra 1 mảng, bắt buộc phải có key bởi vì
+   * ReactJs cần key dể xác định/định danh phần từ, vì khi cần add/update/delete thì nó
+   * cần xác định đúng phần tử nào để thực thi
+   *
+   * Key must be : Unique
+   *
+   * Đối với dữ liệu có thể thay đổi được thì không được sử dụng index để làm key
+   *
+   * Nếu muốn gen ra nhiều thẻ li thì bọc nó trong <Fragment>
+   */
   const studentList = [
     { id: 1, name: 'easey' },
     { id: 5, name: 'frontend' },
@@ -36,7 +46,10 @@ function App() {
     <div>
       <ul>
         {studentList.map((student) => (
-          <li key={student.id}>{student.name}</li>
+          <Fragment key={student.id}>
+            <li>{student.name}</li>
+            <li>{student.name}</li>
+          </Fragment>
         ))}
       </ul>
 
