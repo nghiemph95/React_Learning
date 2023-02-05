@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import MainLayout from './components/Layout/MainLayout';
 import { MyText } from './features/labs/MyText';
 import { StudentCard } from './features/labs/Student';
 import { Student } from './models/student';
@@ -16,7 +17,9 @@ function App() {
 
   return (
     <div>
-      <StudentCard student={nghiem} onClick={handleStudentClick} />
+      <MainLayout>
+        <StudentCard student={nghiem} onClick={handleStudentClick} />
+      </MainLayout>
 
       <MyText></MyText>
       <MyText>easy typescipt</MyText>
