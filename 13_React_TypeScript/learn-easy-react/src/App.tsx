@@ -31,8 +31,7 @@ function App() {
    * ReactJs cần key dể xác định/định danh phần từ, vì khi cần add/update/delete thì nó
    * cần xác định đúng phần tử nào để thực thi
    *
-   * Key must be : Unique
-   *
+   * Key must be : Unique (phải là unique)
    * Đối với dữ liệu có thể thay đổi được thì không được sử dụng index để làm key
    *
    * Nếu muốn gen ra nhiều thẻ li thì bọc nó trong <Fragment>
