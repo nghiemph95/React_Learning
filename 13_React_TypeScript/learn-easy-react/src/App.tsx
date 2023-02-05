@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.css';
+import Widget from './components/common/Widget';
 import MainLayout from './components/Layout/MainLayout';
 import { MyText } from './features/labs/MyText';
 import { StudentCard } from './features/labs/Student';
@@ -40,6 +41,21 @@ function App() {
         <span>easy</span>
         <span>typescipt</span>
       </MyText>
+
+      <div>
+        <div>
+          <Widget title="Earning Overview">Chart 1</Widget>
+        </div>
+        <div>
+          <Widget title="Earning Overview">Chart 2</Widget>
+        </div>
+        <div>
+          <Widget title="Earning Overview">Chart 3</Widget>
+        </div>
+        <div>
+          <Widget title="Earning Overview">Chart 4</Widget>
+        </div>
+      </div>
     </div>
   );
 }
