@@ -1,12 +1,33 @@
 import { useState } from 'react';
 
+// pure
+// impure
+let run = 0;
+function calCount() {
+  run += 5;
+  console.log('calc count', run);
+  return run;
+}
+/** Lưu ý:
+ * 1. initialize value chỉ tác dụng đúng lần render đầu tiên
+ * 2. hàm calCount có thể bị gọi 2 lần dưới dev mode để check xem hàm có phải là pure hay ko
+ * hay là nó bị impure, nhiệm vụ đảm bảo nó phải là pure func
+ * 3. Hàm setState là 1 hàm bất đồng bộ (async function)
+ */
+
 function App() {
+  let i = 0;
+
   const [showMore, setShowMore] = useState(false);
-  const [count, setCount] = useState(0);
+  /** Truyền vào calCount = calback function */
+  const [count, setCount] = useState(calCount); // chỉ tác dụng lần render đầu tiên
   const [name, setName] = useState('');
 
   function handleIncreaseClick() {
-    setCount(count + 1);
+    const newCount = count + 1;
+    setCount(count + 1); // asyn func
+    console.log('after setting count', newCount); // receive old count
+    i += 5;
   }
 
   return (
