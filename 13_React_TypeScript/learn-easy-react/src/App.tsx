@@ -24,6 +24,10 @@ function calCount() {
  * và cập nhật nó
  */
 
+/** Khi muốn quản lý tham chiếu, array, nested object có thể cân nhắc sử dụng useImmer
+ * để giảm tải việc phải clone tham chiếu
+ */
+
 function App() {
   let i = 0;
 
