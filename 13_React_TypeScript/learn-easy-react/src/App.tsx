@@ -20,6 +20,10 @@ function calCount() {
  * 2. Không lấy đc state mới nhất ví dụ khi gọi nhiều setState truyền vào giống nhau
  */
 
+/** Khi làm việc vs Object và Array luôn luôn phải tạo ra tham chiếu mới, khi thay đổi
+ * và cập nhật nó
+ */
+
 function App() {
   let i = 0;
 
