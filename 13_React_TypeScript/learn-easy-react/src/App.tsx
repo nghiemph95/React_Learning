@@ -15,6 +15,11 @@ function calCount() {
  * 3. Hàm setState là 1 hàm bất đồng bộ (async function)
  */
 
+/** Chỉ dùng updater function khi
+ * 1. Có  nhiều setState trong 1 event và state mới đc tính toán dự trên state cũ
+ * 2. Không lấy đc state mới nhất ví dụ khi gọi nhiều setState truyền vào giống nhau
+ */
+
 function App() {
   let i = 0;
 
