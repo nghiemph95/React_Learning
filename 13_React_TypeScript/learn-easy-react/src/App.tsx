@@ -38,7 +38,7 @@ function App() {
 
   function handleIncreaseClick() {
     const newCount = count + 1;
-    setCount(count + 1); // asyn func
+    setCount(count + 1); // asyn function
     console.log('after setting count', newCount); // receive old count
     i += 5;
   }
