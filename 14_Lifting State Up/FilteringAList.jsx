@@ -3,6 +3,7 @@ import { foods, filterItems } from "./data.js";
 
 export default function FilterableList() {
   const [filter, setFilter] = useState("");
+
   const handleSearchChange = (value) => {
     setFilter(value);
   };
