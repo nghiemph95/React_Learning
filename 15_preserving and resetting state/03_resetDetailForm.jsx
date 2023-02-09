@@ -29,6 +29,7 @@ export default function ContactManager() {
         onSelect={(id) => setSelectedId(id)}
       />
       <hr />
+      {/** add key to reset after switch selector */}
       <EditContact
         key={selectedId}
         initialData={selectedContact}
