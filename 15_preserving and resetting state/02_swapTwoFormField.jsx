@@ -17,6 +17,7 @@ export default function App() {
   if (reverse) {
     return (
       <>
+        {/** Swap here : Add key*/}
         <Field key="lastName" label="Last name" />
         <Field key="firstName" label="First name" />
         {checkbox}
@@ -25,6 +26,7 @@ export default function App() {
   } else {
     return (
       <>
+        {/** Swap here : Add key*/}
         <Field key="firstName" label="First name" />
         <Field key="lastName" label="Last name" />
         {checkbox}
