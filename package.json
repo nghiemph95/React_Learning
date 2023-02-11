@@ -1,5 +1,8 @@
 {
+  "type": "module",
   "dependencies": {
-    "react-router-dom": "^5.3.4"
+    "lunar-typescript": "^1.2.27",
+    "react-router-dom": "^5.3.4",
+    "solar2lunar": "^2.0.5"
   }
 }
