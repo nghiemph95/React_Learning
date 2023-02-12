@@ -2,6 +2,7 @@
   "type": "module",
   "dependencies": {
     "lunar-typescript": "^1.2.27",
+    "moon-time": "^1.0.8",
     "react-router-dom": "^5.3.4",
     "solar2lunar": "^2.0.5"
   }
