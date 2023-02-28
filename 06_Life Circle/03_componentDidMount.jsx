@@ -1,6 +1,6 @@
 /** componentDidMount:
  * - Được phép sử dụng
- * - KHởi tạo dữ liệu cho component: gọi API, biến đổi dữ liệu, cập nhật state
+ * - Khởi tạo dữ liệu cho component: gọi API, biến đổi dữ liệu, cập nhật state
  * - Gửi tracking page view (GA, FacebookPixel, ...)
  */
 
