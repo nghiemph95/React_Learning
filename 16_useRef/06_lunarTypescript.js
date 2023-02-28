@@ -1,15 +1,18 @@
 // let moonTime = require("moon-time");
 import moonTime from "moon-time";
 
-let moonTimes = moonTime({
-  day: 18,
-  month: 5,
-  year: 2023,
-});
+function getLunarDay(inputDate) {
+  if (!inputDate) return "";
 
-console.log(moonTimes);
-function getLunarDay(moonTimes) {
+  const [year, month, day] = inputDate.includes("-")
+    ? inputDate.split("-")
+    : inputDate.includes("/")
+    ? inputDate.split("/")
+    : "";
+
   let res = "";
+
+  let moonTimes = moonTime({ day: +day, month: +month, year: +year });
 
   for (const time in moonTimes) {
     let word = `${moonTimes[time]}/`;
@@ -20,4 +23,4 @@ function getLunarDay(moonTimes) {
   return res.slice(0, -1);
 }
 
-console.log(getLunarDay(moonTimes));
+console.log(getLunarDay("22/3/2023"));
