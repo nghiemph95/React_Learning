@@ -12,9 +12,7 @@ function getLunarDay(inputDate) {
 
   console.log([year, month, day]);
 
-  let res = "";
-
-  // let moonTimes = moonTime({ day: +day, month: +month, year: +year });
+  let result = "";
   let moonTimes = moonTime({
     year: +year,
     month: +month,
@@ -24,12 +22,12 @@ function getLunarDay(inputDate) {
   console.log(moonTimes);
 
   for (const time in moonTimes) {
-    let word = `${moonTimes[time]}-`;
+    let word =
+      moonTimes[time] < 10 ? `0${moonTimes[time]}-` : `${moonTimes[time]}-`;
 
-    res = res + word;
+    result = result + word;
   }
-
-  return res.slice(0, -12);
+  return result.slice(0, 10);
 }
 
-console.log(getLunarDay("2023-03-18"));
+console.log(getLunarDay("2023-03-20"));
