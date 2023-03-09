@@ -22,8 +22,8 @@ function getLunarDay(inputDate) {
     return "";
   }
 
-  console.log(year);
-  console.log([year, month, day]);
+  // console.log(year);
+  // console.log([year, month, day]);
 
   let result = "";
   let moonTimes = moonTime({
@@ -32,15 +32,25 @@ function getLunarDay(inputDate) {
     year: +year,
   });
 
-  console.log(moonTimes);
-
   for (const time in moonTimes) {
-    let word =
-      moonTimes[time] < 10 ? `0${moonTimes[time]}/` : `${moonTimes[time]}/`;
+    let word = "";
+
+    console.log("data", moonTimes[time]);
+
+    if (moonTimes[time] < 10) {
+      word = `0${moonTimes[time]}/`;
+    } else if (moonTimes[time] > 10 && moonTimes[time] === "闰") {
+      word = `${moonTimes[time]}/`;
+    } else {
+      word = `${moonTimes[time]}/`;
+    }
 
     result = result + word;
   }
   return result.slice(0, 10);
 }
 
-console.log(getLunarDay("2023-03-20"));
+// console.log(getLunarDay("2033/12/23"));
+console.log(getLunarDay("2023/03/22"));
+
+console.log("01".split(""));
