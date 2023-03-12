@@ -1,7 +1,7 @@
 import { useState } from 'react';
 
-// pure
-// impure
+// pure function: chạy lần 1, 2,3... kết quả vẫn giống nhau
+// impure function: kết quả thay đổi sau mỗi lần chạy
 let run = 0;
 function calCount() {
   run += 5;
