@@ -53,4 +53,4 @@ function getLunarDay(inputDate) {
 // console.log(getLunarDay("2033/12/23"));
 console.log(getLunarDay("2023/03/22"));
 
-console.log("01".split(""));
+console.log("abc".split("").length);
