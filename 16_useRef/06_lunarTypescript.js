@@ -29,6 +29,8 @@ function getLunarDay(inputDate) {
     year: +year,
   });
 
+  console.log("moonTime", moonTimes);
+
   for (const time in moonTimes) {
     let word = "";
 
@@ -53,4 +55,4 @@ function getLunarDay(inputDate) {
   return result.slice(0, 10);
 }
 
-console.log(getLunarDay("2023/03/22"));
+console.log(new Date(getLunarDay("2023/03/20")).getDate());
