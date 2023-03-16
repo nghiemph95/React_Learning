@@ -56,3 +56,7 @@ function getLunarDay(inputDate) {
 }
 
 console.log(new Date(getLunarDay("2023/03/20")).getDate());
+
+for (let i = 0; i < 10; i++) {
+  setTimeout(() => console.log(i));
+}
