@@ -15,7 +15,7 @@ function InputField(props) {
   const { form, name, label, disabled } = props;
 
   /** Lấy thông tin Error ra */
-  const { errors, formState } = form;
+  const { errors, formState, state } = form;
 
   /** Show error khi field đc touch */
   const hasError = errors[name];
